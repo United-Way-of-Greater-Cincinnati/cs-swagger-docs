@@ -74,7 +74,7 @@ paths:
                       properties:
                         addressLine1:
                           type: string
-                          example: 3300 Mercy Health Boulevard
+                          example: Address String
                         addressLine2:
                           nullable: true
                           example: null
@@ -98,13 +98,13 @@ paths:
                           example: false
                         latitude:
                           type: string
-                          example: '39.1809331'
+                          example: '39.1234234'
                         locality:
                           type: string
                           example: Cincinnati
                         longitude:
                           type: string
-                          example: '-84.5966369'
+                          example: '-84.1231231'
                         metadata:
                           type: object
                           properties:
@@ -142,7 +142,7 @@ paths:
                           type: string
                           example: '2024-07-19T13:09:32.751Z'
                     example:
-                      - addressLine1: 3300 Mercy Health Boulevard
+                      - addressLine1: Address String
                         addressLine2: null
                         country: US
                         createdAt: '2024-07-19T13:09:32.751Z'
@@ -150,9 +150,9 @@ paths:
                         elementType: site
                         id: Hxm9BjLEBCGWOKGgcqe4EJ5SpgveDP
                         isConfidential: false
-                        latitude: '39.1809331'
+                        latitude: '39.1234234'
                         locality: Cincinnati
-                        longitude: '-84.5966369'
+                        longitude: '-84.1231231'
                         metadata:
                           addressAccessibility: []
                           addressTransportation: []
@@ -603,7 +603,7 @@ paths:
                           properties:
                             addressLine1:
                               type: string
-                              example: 3300 Mercy Health Boulevard
+                              example: Address String
                             addressLine2:
                               nullable: true
                               example: null
@@ -627,13 +627,13 @@ paths:
                               example: false
                             latitude:
                               type: string
-                              example: '39.1809331'
+                              example: '39.1234234'
                             locality:
                               type: string
                               example: Cincinnati
                             longitude:
                               type: string
-                              example: '-84.5966369'
+                              example: '-84.1231231'
                             metadata:
                               type: object
                               properties:
@@ -671,7 +671,7 @@ paths:
                               type: string
                               example: '2024-07-19T13:09:32.751Z'
                         example:
-                          - addressLine1: 3300 Mercy Health Boulevard
+                          - addressLine1: Address String
                             addressLine2: null
                             country: US
                             createdAt: '2024-07-19T13:09:32.751Z'
@@ -679,9 +679,9 @@ paths:
                             elementType: site
                             id: Hxm9BjLEBCGWOKGgcqe4EJ5SpgveDP
                             isConfidential: false
-                            latitude: '39.1809331'
+                            latitude: '39.1234234'
                             locality: Cincinnati
-                            longitude: '-84.5966369'
+                            longitude: '-84.1231231'
                             metadata:
                               addressAccessibility: []
                               addressTransportation: []
@@ -703,7 +703,7 @@ paths:
                               properties:
                                 addressLine1:
                                   type: string
-                                  example: 1701 Mercy Health Place
+                                  example: Address String
                                 addressLine2:
                                   nullable: true
                                   example: null
@@ -775,7 +775,7 @@ paths:
                                   type: string
                                   example: '2024-07-19T13:09:30.193Z'
                             example:
-                              - addressLine1: 1701 Mercy Health Place
+                              - addressLine1: Address String
                                 addressLine2: null
                                 country: US
                                 createdAt: '2024-07-19T13:09:30.193Z'
@@ -1464,7 +1464,7 @@ paths:
                 Example Search Response:
                   value:
                     addresses:
-                      - addressLine1: 3300 Mercy Health Boulevard
+                      - addressLine1: Address String
                         addressLine2: null
                         country: US
                         createdAt: '2024-07-19T13:09:32.751Z'
@@ -1472,9 +1472,9 @@ paths:
                         elementType: site
                         id: Hxm9BjLEBCGWOKGgcqe4EJ5SpgveDP
                         isConfidential: false
-                        latitude: '39.1809331'
+                        latitude: '39.1234234'
                         locality: Cincinnati
-                        longitude: '-84.5966369'
+                        longitude: '-84.1231231'
                         metadata:
                           addressAccessibility: []
                           addressTransportation: []
@@ -1679,7 +1679,7 @@ paths:
                     serviceId: Hxa5LW9DzIpb20Q4i0gOQq4hWOb4aK
                     site:
                       addresses:
-                        - addressLine1: 3300 Mercy Health Boulevard
+                        - addressLine1: Address String
                           addressLine2: null
                           country: US
                           createdAt: '2024-07-19T13:09:32.751Z'
@@ -1687,9 +1687,9 @@ paths:
                           elementType: site
                           id: Hxm9BjLEBCGWOKGgcqe4EJ5SpgveDP
                           isConfidential: false
-                          latitude: '39.1809331'
+                          latitude: '39.1234234'
                           locality: Cincinnati
-                          longitude: '-84.5966369'
+                          longitude: '-84.1231231'
                           metadata:
                             addressAccessibility: []
                             addressTransportation: []
@@ -1703,7 +1703,7 @@ paths:
                           updatedAt: '2024-07-19T13:09:32.751Z'
                       agency:
                         addresses:
-                          - addressLine1: 1701 Mercy Health Place
+                          - addressLine1: Address String
                             addressLine2: null
                             country: US
                             createdAt: '2024-07-19T13:09:30.193Z'
@@ -2578,7 +2578,7 @@ paths:
                       properties:
                         addressLine1:
                           type: string
-                          example: 3300 Mercy Health Boulevard
+                          example: Address String
                         addressLine2:
                           nullable: true
                           example: null
@@ -2602,13 +2602,13 @@ paths:
                           example: false
                         latitude:
                           type: string
-                          example: '39.1809331'
+                          example: '39.1234234'
                         locality:
                           type: string
                           example: Cincinnati
                         longitude:
                           type: string
-                          example: '-84.5966369'
+                          example: '-84.1231231'
                         metadata:
                           type: object
                           properties:
@@ -2646,7 +2646,7 @@ paths:
                           type: string
                           example: '2024-07-19T13:09:32.751Z'
                     example:
-                      - addressLine1: 3300 Mercy Health Boulevard
+                      - addressLine1: Address String
                         addressLine2: null
                         country: US
                         createdAt: '2024-07-19T13:09:32.751Z'
@@ -2654,9 +2654,9 @@ paths:
                         elementType: site
                         id: Hxm9BjLEBCGWOKGgcqe4EJ5SpgveDP
                         isConfidential: false
-                        latitude: '39.1809331'
+                        latitude: '39.1234234'
                         locality: Cincinnati
-                        longitude: '-84.5966369'
+                        longitude: '-84.1231231'
                         metadata:
                           addressAccessibility: []
                           addressTransportation: []
@@ -3107,7 +3107,7 @@ paths:
                           properties:
                             addressLine1:
                               type: string
-                              example: 3300 Mercy Health Boulevard
+                              example: Address String
                             addressLine2:
                               nullable: true
                               example: null
@@ -3131,13 +3131,13 @@ paths:
                               example: false
                             latitude:
                               type: string
-                              example: '39.1809331'
+                              example: '39.1234234'
                             locality:
                               type: string
                               example: Cincinnati
                             longitude:
                               type: string
-                              example: '-84.5966369'
+                              example: '-84.1231231'
                             metadata:
                               type: object
                               properties:
@@ -3175,7 +3175,7 @@ paths:
                               type: string
                               example: '2024-07-19T13:09:32.751Z'
                         example:
-                          - addressLine1: 3300 Mercy Health Boulevard
+                          - addressLine1: Address String
                             addressLine2: null
                             country: US
                             createdAt: '2024-07-19T13:09:32.751Z'
@@ -3183,9 +3183,9 @@ paths:
                             elementType: site
                             id: Hxm9BjLEBCGWOKGgcqe4EJ5SpgveDP
                             isConfidential: false
-                            latitude: '39.1809331'
+                            latitude: '39.1234234'
                             locality: Cincinnati
-                            longitude: '-84.5966369'
+                            longitude: '-84.1231231'
                             metadata:
                               addressAccessibility: []
                               addressTransportation: []
@@ -3207,7 +3207,7 @@ paths:
                               properties:
                                 addressLine1:
                                   type: string
-                                  example: 1701 Mercy Health Place
+                                  example: Address String
                                 addressLine2:
                                   nullable: true
                                   example: null
@@ -3279,7 +3279,7 @@ paths:
                                   type: string
                                   example: '2024-07-19T13:09:30.193Z'
                             example:
-                              - addressLine1: 1701 Mercy Health Place
+                              - addressLine1: Address String
                                 addressLine2: null
                                 country: US
                                 createdAt: '2024-07-19T13:09:30.193Z'
@@ -3968,7 +3968,7 @@ paths:
                 Resource Example:
                   value:
                     addresses:
-                      - addressLine1: 3300 Mercy Health Boulevard
+                      - addressLine1: Address String
                         addressLine2: null
                         country: US
                         createdAt: '2024-07-19T13:09:32.751Z'
@@ -3976,9 +3976,9 @@ paths:
                         elementType: site
                         id: Hxm9BjLEBCGWOKGgcqe4EJ5SpgveDP
                         isConfidential: false
-                        latitude: '39.1809331'
+                        latitude: '39.1234234'
                         locality: Cincinnati
-                        longitude: '-84.5966369'
+                        longitude: '-84.1231231'
                         metadata:
                           addressAccessibility: []
                           addressTransportation: []
@@ -4183,7 +4183,7 @@ paths:
                     serviceId: Hxa5LW9DzIpb20Q4i0gOQq4hWOb4aK
                     site:
                       addresses:
-                        - addressLine1: 3300 Mercy Health Boulevard
+                        - addressLine1: Address String
                           addressLine2: null
                           country: US
                           createdAt: '2024-07-19T13:09:32.751Z'
@@ -4191,9 +4191,9 @@ paths:
                           elementType: site
                           id: Hxm9BjLEBCGWOKGgcqe4EJ5SpgveDP
                           isConfidential: false
-                          latitude: '39.1809331'
+                          latitude: '39.1234234'
                           locality: Cincinnati
-                          longitude: '-84.5966369'
+                          longitude: '-84.1231231'
                           metadata:
                             addressAccessibility: []
                             addressTransportation: []
@@ -4207,7 +4207,7 @@ paths:
                           updatedAt: '2024-07-19T13:09:32.751Z'
                       agency:
                         addresses:
-                          - addressLine1: 1701 Mercy Health Place
+                          - addressLine1: Address String
                             addressLine2: null
                             country: US
                             createdAt: '2024-07-19T13:09:30.193Z'
@@ -12658,7 +12658,7 @@ paths:
                           properties:
                             addressLine1:
                               type: string
-                              example: 1701 Mercy Health Place
+                              example: Address String
                             addressLine2:
                               nullable: true
                               example: null
@@ -12730,7 +12730,7 @@ paths:
                               type: string
                               example: '2024-10-21T10:56:18.082Z'
                         example:
-                          - addressLine1: 1701 Mercy Health Place
+                          - addressLine1: Address String
                             addressLine2: null
                             country: US
                             createdAt: '2024-07-19T13:09:30.193Z'
@@ -13872,7 +13872,7 @@ paths:
                         updatedAt: '2024-10-21T10:56:18.366Z'
                     agency:
                       addresses:
-                        - addressLine1: 1701 Mercy Health Place
+                        - addressLine1: Address String
                           addressLine2: null
                           country: US
                           createdAt: '2024-07-19T13:09:30.193Z'
