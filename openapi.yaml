@@ -5146,6 +5146,11 @@ paths:
                 
             - nextUrl (string, nullable)
       operationId: getAgencies
+      parameters:
+        - name: ''
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: GET Agencies by ID Example
@@ -5853,6 +5858,12 @@ paths:
 
         The response provides connections between different elements such as the agency's organization, services, sites, addresses, emails, phones, contact persons, references, and hours, allowing consumers to understand the comprehensive details of the agency without providing a complete JSON example.
       operationId: getAgency
+      parameters:
+        - name: $withConfidential
+          in: query
+          schema:
+            type: string
+            example: 'true'
       responses:
         '200':
           description: Agency Example
@@ -27787,112 +27798,6 @@ paths:
                 Add Profile to Network Example:
                   value:
                     id: 3c46ef4d-9ac3-4270-bbdb-5cdc77ccac2c
-    patch:
-      tags:
-        - Profile
-      summary: PATCH Add Profile to Network
-      description: This route does not actually exist even though it's documented in the API.
-      operationId: patchAddProfileToNetwork
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                network:
-                  type: string
-                  example: HxL7pLOx6iPl4wWQixv7gvDiD1jAL0
-                profile:
-                  type: string
-                  example: Hx7vWy9y1I5g2eX5f8xvpzAUPbJ5lX
-            examples:
-              PATCH Add Profile to Network:
-                value:
-                  network: HxL7pLOx6iPl4wWQixv7gvDiD1jAL0
-                  profile: Hx7vWy9y1I5g2eX5f8xvpzAUPbJ5lX
-      responses:
-        '200':
-          description: ''
-        '404':
-          description: Route does not exist
-          headers:
-            Access-Control-Allow-Methods:
-              schema:
-                type: string
-                example: OPTIONS,GET,POST,PATCH,DELETE
-            Access-Control-Allow-Origin:
-              schema:
-                type: string
-                example: '*'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            Content-Length:
-              schema:
-                type: string
-                example: '9'
-            Cross-Origin-Embedder-Policy:
-              schema:
-                type: string
-                example: require-corp
-            Cross-Origin-Opener-Policy:
-              schema:
-                type: string
-                example: same-origin
-            Cross-Origin-Resource-Policy:
-              schema:
-                type: string
-                example: same-origin
-            Date:
-              schema:
-                type: string
-                example: Fri, 28 Mar 2025 14:24:26 GMT
-            Origin-Agent-Cluster:
-              schema:
-                type: string
-                example: '?1'
-            Referrer-Policy:
-              schema:
-                type: string
-                example: no-referrer
-            Strict-Transport-Security:
-              schema:
-                type: string
-                example: max-age=15552000; includeSubDomains
-            Vary:
-              schema:
-                type: string
-                example: Accept-Encoding
-            X-Content-Type-Options:
-              schema:
-                type: string
-                example: nosniff
-            X-DNS-Prefetch-Control:
-              schema:
-                type: string
-                example: 'off'
-            X-Download-Options:
-              schema:
-                type: string
-                example: noopen
-            X-Frame-Options:
-              schema:
-                type: string
-                example: SAMEORIGIN
-            X-Permitted-Cross-Domain-Policies:
-              schema:
-                type: string
-                example: none
-            X-XSS-Protection:
-              schema:
-                type: string
-                example: '0'
-          content:
-            text/plain:
-              examples:
-                Route does not exist:
-                  value: Not Found
     parameters:
       - name: profile_id
         in: path
@@ -31306,17 +31211,301 @@ paths:
                         postalCode: '00001'
                         region: Washington DC
                         updatedAt: '2025-03-12T20:31:40.288Z'
-      security:
-        - basicAuth: []
     post:
       tags:
         - Address
       summary: POST Address
       description: POST Address
       operationId: postAddress
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                addressLine1:
+                  type: string
+                  example: 666 Devil's Lane
+                addressLine2:
+                  type: string
+                  example: Apt. 66
+                country:
+                  type: string
+                  example: US
+                elementId:
+                  type: string
+                  example: Hxy2DzBxGsD2a8pjsWG3vKzSGv82oy
+                elementType:
+                  type: string
+                  example: site
+                isConfidential:
+                  type: boolean
+                  example: true
+                isMailing:
+                  type: string
+                  example: 'true'
+                isPhysical:
+                  type: string
+                  example: 'false'
+                latitude:
+                  type: string
+                  example: '45.123456789'
+                locality:
+                  type: string
+                  example: Alderan
+                longitude:
+                  type: string
+                  example: '-89.9'
+                metadata:
+                  type: object
+                  properties:
+                    fakeData:
+                      type: string
+                      example: this is just extra to make sure we can add stuff to the metadata.
+                postalCode:
+                  type: string
+                  example: '66666'
+                region:
+                  type: string
+                  example: Alderan
+            examples:
+              POST Address:
+                value:
+                  addressLine1: 666 Devil's Lane
+                  addressLine2: Apt. 66
+                  country: US
+                  elementId: Hxy2DzBxGsD2a8pjsWG3vKzSGv82oy
+                  elementType: site
+                  isConfidential: true
+                  isMailing: 'true'
+                  isPhysical: 'false'
+                  latitude: '45.123456789'
+                  locality: Alderan
+                  longitude: '-89.9'
+                  metadata:
+                    fakeData: this is just extra to make sure we can add stuff to the metadata.
+                  postalCode: '66666'
+                  region: Alderan
       responses:
-        '200':
-          description: ''
+        '201':
+          description: Create Address Example
+          headers:
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+                example: OPTIONS,GET,POST,PATCH,DELETE
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '1011'
+            Cross-Origin-Embedder-Policy:
+              schema:
+                type: string
+                example: require-corp
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Date:
+              schema:
+                type: string
+                example: Mon, 31 Mar 2025 15:11:55 GMT
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            Vary:
+              schema:
+                type: string
+                example: Accept-Encoding
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: '0'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  addressLine1:
+                    type: string
+                    example: 666 Devil's Lane
+                  addressLine2:
+                    type: string
+                    example: Apt. 66
+                  country:
+                    type: string
+                    example: US
+                  createdAt:
+                    type: string
+                    example: '2025-03-31T15:11:55.214Z'
+                  elementId:
+                    type: string
+                    example: Hxy2DzBxGsD2a8pjsWG3vKzSGv82oy
+                  elementType:
+                    type: string
+                    example: site
+                  id:
+                    type: string
+                    example: HxGmvjg33U3yzGeXFEkB2vyu4rV0Bw
+                  isConfidential:
+                    type: boolean
+                    example: true
+                  latitude:
+                    type: string
+                    example: '45.123456789'
+                  locality:
+                    type: string
+                    example: Alderan
+                  longitude:
+                    type: string
+                    example: '-89.9'
+                  metadata:
+                    type: object
+                    properties:
+                      fakeData:
+                        type: string
+                        example: this is just extra to make sure we can add stuff to the metadata.
+                  organization:
+                    type: object
+                    properties:
+                      address:
+                        nullable: true
+                        example: null
+                      city:
+                        nullable: true
+                        example: null
+                      country:
+                        type: string
+                        example: US
+                      createdAt:
+                        type: string
+                        example: '2024-05-16T14:03:15.435Z'
+                      createdById:
+                        type: string
+                        example: HxEweyqapUWqzyvASlJoDO7UW1Qozv
+                      demographicSurveyId:
+                        type: string
+                        example: HxGE1WkzvtgBP9qmSKGDxWOFjBzWQb
+                      description:
+                        type: string
+                        example: May 16, 2024. UWGC Test Resource Migration
+                      email:
+                        nullable: true
+                        example: null
+                      id:
+                        type: string
+                        example: HxPKoLwK7H0PDOq7iWoyyNWfB79KGp
+                      logo:
+                        nullable: true
+                        example: null
+                      name:
+                        type: string
+                        example: United Way of Greater Cincinnati (UWGC) - UAT Sandbox
+                      state:
+                        nullable: true
+                        example: null
+                      timezone:
+                        nullable: true
+                        example: null
+                      updatedAt:
+                        type: string
+                        example: '2024-06-03T17:45:05.807Z'
+                      website:
+                        nullable: true
+                        example: null
+                      zipcode:
+                        nullable: true
+                        example: null
+                  organizationId:
+                    type: string
+                    example: HxPKoLwK7H0PDOq7iWoyyNWfB79KGp
+                  postalCode:
+                    type: string
+                    example: '66666'
+                  region:
+                    type: string
+                    example: Alderan
+                  updatedAt:
+                    type: string
+                    example: '2025-03-31T15:11:55.214Z'
+              examples:
+                Create Address Example:
+                  value:
+                    addressLine1: 666 Devil's Lane
+                    addressLine2: Apt. 66
+                    country: US
+                    createdAt: '2025-03-31T15:11:55.214Z'
+                    elementId: Hxy2DzBxGsD2a8pjsWG3vKzSGv82oy
+                    elementType: site
+                    id: HxGmvjg33U3yzGeXFEkB2vyu4rV0Bw
+                    isConfidential: true
+                    latitude: '45.123456789'
+                    locality: Alderan
+                    longitude: '-89.9'
+                    metadata:
+                      fakeData: this is just extra to make sure we can add stuff to the metadata.
+                    organization:
+                      address: null
+                      city: null
+                      country: US
+                      createdAt: '2024-05-16T14:03:15.435Z'
+                      createdById: HxEweyqapUWqzyvASlJoDO7UW1Qozv
+                      demographicSurveyId: HxGE1WkzvtgBP9qmSKGDxWOFjBzWQb
+                      description: May 16, 2024. UWGC Test Resource Migration
+                      email: null
+                      id: HxPKoLwK7H0PDOq7iWoyyNWfB79KGp
+                      logo: null
+                      name: United Way of Greater Cincinnati (UWGC) - UAT Sandbox
+                      state: null
+                      timezone: null
+                      updatedAt: '2024-06-03T17:45:05.807Z'
+                      website: null
+                      zipcode: null
+                    organizationId: HxPKoLwK7H0PDOq7iWoyyNWfB79KGp
+                    postalCode: '66666'
+                    region: Alderan
+                    updatedAt: '2025-03-31T15:11:55.214Z'
   /address/{id}:
     get:
       tags:
@@ -31583,16 +31772,300 @@ paths:
       summary: PATCH Address
       description: PATCH Address
       operationId: patchAddress
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                addressLine1:
+                  type: string
+                  example: 666 Devil's Ln
+                addressLine2:
+                  type: string
+                  example: Apt. 13
+                country:
+                  type: string
+                  example: US
+                elementId:
+                  type: string
+                  example: Hxy2DzBxGsD2a8pjsWG3vKzSGv82oy
+                elementType:
+                  type: string
+                  example: site
+                isConfidential:
+                  type: boolean
+                  example: false
+                latitude:
+                  type: string
+                  example: '45.123456789'
+                locality:
+                  type: string
+                  example: Alderan
+                longitude:
+                  type: string
+                  example: '-89.9'
+                metadata:
+                  type: object
+                  properties:
+                    fakeData:
+                      type: string
+                      example: Changing stuff here as an example.
+                postalCode:
+                  type: string
+                  example: '66666'
+                region:
+                  type: string
+                  example: Alderan
+            examples:
+              PATCH Address:
+                value:
+                  addressLine1: 666 Devil's Ln
+                  addressLine2: Apt. 13
+                  country: US
+                  elementId: Hxy2DzBxGsD2a8pjsWG3vKzSGv82oy
+                  elementType: site
+                  isConfidential: false
+                  latitude: '45.123456789'
+                  locality: Alderan
+                  longitude: '-89.9'
+                  metadata:
+                    fakeData: Changing stuff here as an example.
+                  postalCode: '66666'
+                  region: Alderan
       responses:
         '200':
-          description: ''
+          description: Edit Address Example Confidential / Edit Address Example
+          headers:
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+                example: OPTIONS,GET,POST,PATCH,DELETE
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '979'
+            Cross-Origin-Embedder-Policy:
+              schema:
+                type: string
+                example: require-corp
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Date:
+              schema:
+                type: string
+                example: Mon, 31 Mar 2025 15:30:49 GMT
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            Vary:
+              schema:
+                type: string
+                example: Accept-Encoding
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: '0'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  addressLine1:
+                    type: string
+                    example: 666 Devil's Ln
+                  addressLine2:
+                    type: string
+                    example: Apt. 13
+                  country:
+                    type: string
+                    example: US
+                  createdAt:
+                    type: string
+                    example: '2025-03-31T15:11:55.214Z'
+                  elementId:
+                    type: string
+                    example: Hxy2DzBxGsD2a8pjsWG3vKzSGv82oy
+                  elementType:
+                    type: string
+                    example: site
+                  id:
+                    type: string
+                    example: HxGmvjg33U3yzGeXFEkB2vyu4rV0Bw
+                  isConfidential:
+                    type: boolean
+                    example: false
+                  latitude:
+                    type: string
+                    example: '45.123456789'
+                  locality:
+                    type: string
+                    example: Alderan
+                  longitude:
+                    type: string
+                    example: '-89.9'
+                  message:
+                    type: string
+                    example: '**confidential**'
+                  metadata:
+                    type: object
+                    properties:
+                      fakeData:
+                        type: string
+                        example: Changing stuff here as an example.
+                  organization:
+                    type: object
+                    properties:
+                      address:
+                        nullable: true
+                        example: null
+                      city:
+                        nullable: true
+                        example: null
+                      country:
+                        type: string
+                        example: US
+                      createdAt:
+                        type: string
+                        example: '2024-05-16T14:03:15.435Z'
+                      createdById:
+                        type: string
+                        example: HxEweyqapUWqzyvASlJoDO7UW1Qozv
+                      demographicSurveyId:
+                        type: string
+                        example: HxGE1WkzvtgBP9qmSKGDxWOFjBzWQb
+                      description:
+                        type: string
+                        example: May 16, 2024. UWGC Test Resource Migration
+                      email:
+                        nullable: true
+                        example: null
+                      id:
+                        type: string
+                        example: HxPKoLwK7H0PDOq7iWoyyNWfB79KGp
+                      logo:
+                        nullable: true
+                        example: null
+                      name:
+                        type: string
+                        example: United Way of Greater Cincinnati (UWGC) - UAT Sandbox
+                      state:
+                        nullable: true
+                        example: null
+                      timezone:
+                        nullable: true
+                        example: null
+                      updatedAt:
+                        type: string
+                        example: '2024-06-03T17:45:05.807Z'
+                      website:
+                        nullable: true
+                        example: null
+                      zipcode:
+                        nullable: true
+                        example: null
+                  organizationId:
+                    type: string
+                    example: HxPKoLwK7H0PDOq7iWoyyNWfB79KGp
+                  postalCode:
+                    type: string
+                    example: '66666'
+                  region:
+                    type: string
+                    example: Alderan
+                  updatedAt:
+                    type: string
+                    example: '2025-03-31T15:30:49.346Z'
+              examples:
+                Edit Address Example:
+                  value:
+                    addressLine1: 666 Devil's Ln
+                    addressLine2: Apt. 13
+                    country: US
+                    createdAt: '2025-03-31T15:11:55.214Z'
+                    elementId: Hxy2DzBxGsD2a8pjsWG3vKzSGv82oy
+                    elementType: site
+                    id: HxGmvjg33U3yzGeXFEkB2vyu4rV0Bw
+                    isConfidential: false
+                    latitude: '45.123456789'
+                    locality: Alderan
+                    longitude: '-89.9'
+                    metadata:
+                      fakeData: Changing stuff here as an example.
+                    organization:
+                      address: null
+                      city: null
+                      country: US
+                      createdAt: '2024-05-16T14:03:15.435Z'
+                      createdById: HxEweyqapUWqzyvASlJoDO7UW1Qozv
+                      demographicSurveyId: HxGE1WkzvtgBP9qmSKGDxWOFjBzWQb
+                      description: May 16, 2024. UWGC Test Resource Migration
+                      email: null
+                      id: HxPKoLwK7H0PDOq7iWoyyNWfB79KGp
+                      logo: null
+                      name: United Way of Greater Cincinnati (UWGC) - UAT Sandbox
+                      state: null
+                      timezone: null
+                      updatedAt: '2024-06-03T17:45:05.807Z'
+                      website: null
+                      zipcode: null
+                    organizationId: HxPKoLwK7H0PDOq7iWoyyNWfB79KGp
+                    postalCode: '66666'
+                    region: Alderan
+                    updatedAt: '2025-03-31T15:30:49.346Z'
+                Edit Address Example Confidential:
+                  value:
+                    message: '**confidential**'
     parameters:
       - name: id
         in: path
         required: true
         schema:
           type: string
-          example: ''
+          example: HxGmvjg33U3yzGeXFEkB2vyu4rV0Bw
   /email:
     get:
       tags:
@@ -31850,6 +32323,233 @@ paths:
                         metadata: null
                         organizationId: HxPKoLwK7H0PDOq7iWoyyNWfB79KGp
                         updatedAt: '2025-03-12T20:31:35.506Z'
+    post:
+      tags:
+        - Email
+      summary: POST Email
+      description: POST Email
+      operationId: postEmail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  example: A fake email for an exoplanet
+                elementId:
+                  type: string
+                  example: Hxy2DzBxGsD2a8pjsWG3vKzSGv82oy
+                elementType:
+                  type: string
+                  example: site
+                emailAddress:
+                  type: string
+                  example: fake@thedeathstar.com
+                metadata:
+                  type: object
+                  properties: {}
+            examples:
+              POST Email:
+                value:
+                  description: A fake email for an exoplanet
+                  elementId: Hxy2DzBxGsD2a8pjsWG3vKzSGv82oy
+                  elementType: site
+                  emailAddress: fake@thedeathstar.com
+                  metadata: {}
+      responses:
+        '201':
+          description: Create Email Example
+          headers:
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+                example: OPTIONS,GET,POST,PATCH,DELETE
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '838'
+            Cross-Origin-Embedder-Policy:
+              schema:
+                type: string
+                example: require-corp
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Date:
+              schema:
+                type: string
+                example: Mon, 31 Mar 2025 18:17:43 GMT
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            Vary:
+              schema:
+                type: string
+                example: Accept-Encoding
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: '0'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  createdAt:
+                    type: string
+                    example: '2025-03-31T18:17:43.733Z'
+                  description:
+                    type: string
+                    example: A fake email for an exoplanet
+                  elementId:
+                    type: string
+                    example: Hxy2DzBxGsD2a8pjsWG3vKzSGv82oy
+                  elementType:
+                    type: string
+                    example: site
+                  emailAddress:
+                    type: string
+                    example: fake@thedeathstar.com
+                  id:
+                    type: string
+                    example: HxqLa2zNJIJk4ogEtemwwbWImllJnL
+                  isConfidential:
+                    type: boolean
+                    example: false
+                  metadata:
+                    type: object
+                    properties: {}
+                  organization:
+                    type: object
+                    properties:
+                      address:
+                        nullable: true
+                        example: null
+                      city:
+                        nullable: true
+                        example: null
+                      country:
+                        type: string
+                        example: US
+                      createdAt:
+                        type: string
+                        example: '2024-05-16T14:03:15.435Z'
+                      createdById:
+                        type: string
+                        example: HxEweyqapUWqzyvASlJoDO7UW1Qozv
+                      demographicSurveyId:
+                        type: string
+                        example: HxGE1WkzvtgBP9qmSKGDxWOFjBzWQb
+                      description:
+                        type: string
+                        example: May 16, 2024. UWGC Test Resource Migration
+                      email:
+                        nullable: true
+                        example: null
+                      id:
+                        type: string
+                        example: HxPKoLwK7H0PDOq7iWoyyNWfB79KGp
+                      logo:
+                        nullable: true
+                        example: null
+                      name:
+                        type: string
+                        example: United Way of Greater Cincinnati (UWGC) - UAT Sandbox
+                      state:
+                        nullable: true
+                        example: null
+                      timezone:
+                        nullable: true
+                        example: null
+                      updatedAt:
+                        type: string
+                        example: '2024-06-03T17:45:05.807Z'
+                      website:
+                        nullable: true
+                        example: null
+                      zipcode:
+                        nullable: true
+                        example: null
+                  organizationId:
+                    type: string
+                    example: HxPKoLwK7H0PDOq7iWoyyNWfB79KGp
+                  updatedAt:
+                    type: string
+                    example: '2025-03-31T18:17:43.733Z'
+              examples:
+                Create Email Example:
+                  value:
+                    createdAt: '2025-03-31T18:17:43.733Z'
+                    description: A fake email for an exoplanet
+                    elementId: Hxy2DzBxGsD2a8pjsWG3vKzSGv82oy
+                    elementType: site
+                    emailAddress: fake@thedeathstar.com
+                    id: HxqLa2zNJIJk4ogEtemwwbWImllJnL
+                    isConfidential: false
+                    metadata: {}
+                    organization:
+                      address: null
+                      city: null
+                      country: US
+                      createdAt: '2024-05-16T14:03:15.435Z'
+                      createdById: HxEweyqapUWqzyvASlJoDO7UW1Qozv
+                      demographicSurveyId: HxGE1WkzvtgBP9qmSKGDxWOFjBzWQb
+                      description: May 16, 2024. UWGC Test Resource Migration
+                      email: null
+                      id: HxPKoLwK7H0PDOq7iWoyyNWfB79KGp
+                      logo: null
+                      name: United Way of Greater Cincinnati (UWGC) - UAT Sandbox
+                      state: null
+                      timezone: null
+                      updatedAt: '2024-06-03T17:45:05.807Z'
+                      website: null
+                      zipcode: null
+                    organizationId: HxPKoLwK7H0PDOq7iWoyyNWfB79KGp
+                    updatedAt: '2025-03-31T18:17:43.733Z'
   /email/{id}:
     get:
       tags:
@@ -32053,13 +32753,244 @@ paths:
                       zipcode: null
                     organizationId: HxPKoLwK7H0PDOq7iWoyyNWfB79KGp
                     updatedAt: '2025-03-12T13:24:02.813Z'
+    patch:
+      tags:
+        - Email
+      summary: PATCH Email
+      description: PATCH Email
+      operationId: patchEmail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  example: A fake email for an exoplanet
+                elementId:
+                  type: string
+                  example: Hx816Dy1ACgldNNEHPk8NdeTQ9Wbm8
+                elementType:
+                  type: string
+                  example: agency
+                emailAddress:
+                  type: string
+                  example: fake@thedeathstar.net
+                isConfidential:
+                  type: boolean
+                  example: false
+                metadata:
+                  type: object
+                  properties: {}
+            examples:
+              PATCH Email:
+                value:
+                  description: A fake email for an exoplanet
+                  elementId: Hx816Dy1ACgldNNEHPk8NdeTQ9Wbm8
+                  elementType: agency
+                  emailAddress: fake@thedeathstar.net
+                  isConfidential: false
+                  metadata: {}
+      responses:
+        '200':
+          description: Edit Email Example
+          headers:
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+                example: OPTIONS,GET,POST,PATCH,DELETE
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '838'
+            Cross-Origin-Embedder-Policy:
+              schema:
+                type: string
+                example: require-corp
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Date:
+              schema:
+                type: string
+                example: Mon, 31 Mar 2025 18:21:39 GMT
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            Vary:
+              schema:
+                type: string
+                example: Accept-Encoding
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: '0'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  createdAt:
+                    type: string
+                    example: '2025-03-31T18:17:43.733Z'
+                  description:
+                    type: string
+                    example: A fake email for an exoplanet
+                  elementId:
+                    type: string
+                    example: Hxy2DzBxGsD2a8pjsWG3vKzSGv82oy
+                  elementType:
+                    type: string
+                    example: site
+                  emailAddress:
+                    type: string
+                    example: fake@thedeathstar.net
+                  id:
+                    type: string
+                    example: HxqLa2zNJIJk4ogEtemwwbWImllJnL
+                  isConfidential:
+                    type: boolean
+                    example: false
+                  metadata:
+                    type: object
+                    properties: {}
+                  organization:
+                    type: object
+                    properties:
+                      address:
+                        nullable: true
+                        example: null
+                      city:
+                        nullable: true
+                        example: null
+                      country:
+                        type: string
+                        example: US
+                      createdAt:
+                        type: string
+                        example: '2024-05-16T14:03:15.435Z'
+                      createdById:
+                        type: string
+                        example: HxEweyqapUWqzyvASlJoDO7UW1Qozv
+                      demographicSurveyId:
+                        type: string
+                        example: HxGE1WkzvtgBP9qmSKGDxWOFjBzWQb
+                      description:
+                        type: string
+                        example: May 16, 2024. UWGC Test Resource Migration
+                      email:
+                        nullable: true
+                        example: null
+                      id:
+                        type: string
+                        example: HxPKoLwK7H0PDOq7iWoyyNWfB79KGp
+                      logo:
+                        nullable: true
+                        example: null
+                      name:
+                        type: string
+                        example: United Way of Greater Cincinnati (UWGC) - UAT Sandbox
+                      state:
+                        nullable: true
+                        example: null
+                      timezone:
+                        nullable: true
+                        example: null
+                      updatedAt:
+                        type: string
+                        example: '2024-06-03T17:45:05.807Z'
+                      website:
+                        nullable: true
+                        example: null
+                      zipcode:
+                        nullable: true
+                        example: null
+                  organizationId:
+                    type: string
+                    example: HxPKoLwK7H0PDOq7iWoyyNWfB79KGp
+                  updatedAt:
+                    type: string
+                    example: '2025-03-31T18:21:39.015Z'
+              examples:
+                Edit Email Example:
+                  value:
+                    createdAt: '2025-03-31T18:17:43.733Z'
+                    description: A fake email for an exoplanet
+                    elementId: Hxy2DzBxGsD2a8pjsWG3vKzSGv82oy
+                    elementType: site
+                    emailAddress: fake@thedeathstar.net
+                    id: HxqLa2zNJIJk4ogEtemwwbWImllJnL
+                    isConfidential: false
+                    metadata: {}
+                    organization:
+                      address: null
+                      city: null
+                      country: US
+                      createdAt: '2024-05-16T14:03:15.435Z'
+                      createdById: HxEweyqapUWqzyvASlJoDO7UW1Qozv
+                      demographicSurveyId: HxGE1WkzvtgBP9qmSKGDxWOFjBzWQb
+                      description: May 16, 2024. UWGC Test Resource Migration
+                      email: null
+                      id: HxPKoLwK7H0PDOq7iWoyyNWfB79KGp
+                      logo: null
+                      name: United Way of Greater Cincinnati (UWGC) - UAT Sandbox
+                      state: null
+                      timezone: null
+                      updatedAt: '2024-06-03T17:45:05.807Z'
+                      website: null
+                      zipcode: null
+                    organizationId: HxPKoLwK7H0PDOq7iWoyyNWfB79KGp
+                    updatedAt: '2025-03-31T18:21:39.015Z'
     parameters:
       - name: id
         in: path
         required: true
         schema:
           type: string
-          example: ''
+          example: HxqLa2zNJIJk4ogEtemwwbWImllJnL
   /contact-person:
     get:
       tags:
@@ -32496,7 +33427,7 @@ paths:
                     organizationId: HxPKoLwK7H0PDOq7iWoyyNWfB79KGp
                     title: General
                     updatedAt: '2025-03-19T16:19:00.739Z'
-  /contact-person/Hxjwr2d2QCv6mkkWtE8m97PtmbdvPJ:
+  /contact-person/{id}:
     get:
       tags:
         - Contact Person
@@ -32960,6 +33891,13 @@ paths:
                 Edit Contact Personal Confidential Contact:
                   value:
                     message: '**confidential**'
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          example: Hxjwr2d2QCv6mkkWtE8m97PtmbdvPJ
   /survey:
     get:
       tags:
@@ -34708,7 +35646,7 @@ paths:
         schema:
           type: string
           example: HxjgyeWrXUvaj1mqIAgdP9Du4BgDn4
-  /survey-form/766333a5-0f1c-4520-8f36-feca2febea77:
+  /survey-form/{id}:
     get:
       tags:
         - Survey Form
@@ -34718,6 +35656,13 @@ paths:
       responses:
         '200':
           description: ''
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          example: ''
   /survey-response:
     get:
       tags:
@@ -36699,7 +37644,7 @@ paths:
           in: query
           schema:
             type: string
-            example: 90d44b3b-8a4b-48be-aab1-e261b170841f
+            example: b8187d71-0ce0-46ac-a17a-d7f13d95fba1
       responses:
         '200':
           description: GET Cases Example
@@ -38320,14 +39265,6 @@ paths:
                     type: url
                     updatedAt: '2025-03-05T18:28:18.554Z'
                     uri: www.training.org
-    parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
-          example: HxpwjNJEwI5jxNxyClOv45bCKo1j6b
-  /reference/HxpwjNJEwI5jxNxyClOv45bCKo1j6b:
     patch:
       tags:
         - Reference
@@ -38647,6 +39584,13 @@ paths:
                     type: url
                     updatedAt: '2025-03-19T15:57:48.694Z'
                     uri: www.training.org
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          example: HxpwjNJEwI5jxNxyClOv45bCKo1j6b
   /program:
     get:
       tags:
@@ -39191,14 +40135,6 @@ paths:
                       zipcode: null
                     organizationId: HxPKoLwK7H0PDOq7iWoyyNWfB79KGp
                     updatedAt: '2025-03-19T16:05:25.713Z'
-    parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
-          example: HxjP5jkNqc1ma6keuxvdlyLUBWV6m7
-  /program/HxjP5jkNqc1ma6keuxvdlyLUBWV6m7:
     patch:
       tags:
         - Program
@@ -39403,6 +40339,13 @@ paths:
                       zipcode: null
                     organizationId: HxPKoLwK7H0PDOq7iWoyyNWfB79KGp
                     updatedAt: '2025-03-19T16:07:59.488Z'
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          example: HxjP5jkNqc1ma6keuxvdlyLUBWV6m7
   /change-log:
     get:
       tags:
@@ -39803,10 +40746,10 @@ paths:
                           example: null
                         id:
                           type: string
-                          example: HxL23p1mNU8XPW3aS9ewPgkFJBB0nE
+                          example: HxL23p1mNU8XPW3aS9ewPgtY7CB0nE
                         name:
                           type: string
-                          example: ShareWithNetwork
+                          example: Test Application
                         organizationId:
                           type: string
                           example: HxPKoLwK7H0PDOq7iWoyyNWfB79KGp
@@ -39828,8 +40771,8 @@ paths:
                     example:
                       - createdAt: '2024-05-22T15:22:22.494Z'
                         description: null
-                        id: HxL23p1mNU8XPW3aS9ewPgkFJBB0nE
-                        name: ShareWithNetwork
+                        id: HxL23p1mNU8XPW3aS9ewPgtY7CB0nE
+                        name: Test Application
                         organizationId: HxPKoLwK7H0PDOq7iWoyyNWfB79KGp
                         scopes:
                           - user:read
@@ -39851,8 +40794,8 @@ paths:
                     data:
                       - createdAt: '2024-05-22T15:22:22.494Z'
                         description: null
-                        id: HxL23p1mNU8XPW3aS9ewPgkFJBB0nE
-                        name: ShareWithNetwork
+                        id: HxL23p1mNU8XPW3aS9ewPgtY7CB0nE
+                        name: Test Application
                         organizationId: HxPKoLwK7H0PDOq7iWoyyNWfB79KGp
                         scopes:
                           - user:read
@@ -39866,7 +40809,7 @@ paths:
       tags:
         - Application
       summary: POST Application
-      description: POST Application
+      description: Unable to use this endpoint from outside an CS app.
       operationId: postApplication
       requestBody:
         content:
@@ -40071,10 +41014,10 @@ paths:
                     example: null
                   id:
                     type: string
-                    example: HxL23p1mNU8XPW3aS9ewPgkFJBB0nE
+                    example: HxL23p1mNU8XPW3aS9ewPgtY7CB0nE
                   name:
                     type: string
-                    example: ShareWithNetwork
+                    example: Test Application
                   organization:
                     type: object
                     properties:
@@ -40149,8 +41092,8 @@ paths:
                   value:
                     createdAt: '2024-05-22T15:22:22.494Z'
                     description: null
-                    id: HxL23p1mNU8XPW3aS9ewPgkFJBB0nE
-                    name: ShareWithNetwork
+                    id: HxL23p1mNU8XPW3aS9ewPgtY7CB0nE
+                    name: Test Application
                     organization:
                       address: null
                       city: null
@@ -40929,36 +41872,6 @@ paths:
         schema:
           type: string
           example: Hxq4Pxg2zTQvKjWPivnbWbwF99qdW2
-  /funding-source/{id}/agency:
-    post:
-      tags:
-        - Funding Source
-      summary: POST Add Funding Source to Agency
-      description: POST Add Funding Source to Agency
-      operationId: postAddFundingSourceToAgency
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                agency:
-                  type: string
-                  example: Hx816Dy1ACgldNNEHPk8NdeTQ9Wbm8
-            examples:
-              POST Add Funding Source to Agency:
-                value:
-                  agency: Hx816Dy1ACgldNNEHPk8NdeTQ9Wbm8
-      responses:
-        '200':
-          description: ''
-    parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
-          example: Hxq4Pxg2zTQvKjWPivnbWbwF99qdW2
 components:
   securitySchemes:
     apiKey:
@@ -41021,6 +41934,8 @@ tags:
       Phone is a data structure that collects phone data and connects it to Contact Person, Site, and Agency.
 
       Find more on element types for phones in the [Element Type Documentation](https://app.hex.tech/5da8c0c4-952b-48c4-8d99-d85de0986b86/app/0195dd64-51b6-7004-8a88-e8013f776496/latest).
+
+      Note: once you've assigned a phone an element type and ID, you cannot change it.
   - name: Address
     description: |-
       Address is a data structure that collects address data and connects it to Site and Agency.
@@ -41033,11 +41948,15 @@ tags:
           
 
       Find more on element types for addresses in the [Element Type Documentation](https://app.hex.tech/5da8c0c4-952b-48c4-8d99-d85de0986b86/app/0195dd64-51b6-7004-8a88-e8013f776496/latest).
+
+      Note: once you've assigned an address an element type and ID, you cannot change it.
   - name: Email
     description: |-
       Email is a data structure that collects email data and connects it to Contact Person, Site, and Agency.
 
       Find more on element types for emails in the [Element Type Documentation](https://app.hex.tech/5da8c0c4-952b-48c4-8d99-d85de0986b86/app/0195dd64-51b6-7004-8a88-e8013f776496/latest).
+
+      Note: once you've assigned an email an element type and ID, you cannot change it.
   - name: Contact Person
     description: Find more on element types for contact people in the [Element Type Documentation](https://app.hex.tech/5da8c0c4-952b-48c4-8d99-d85de0986b86/app/0195dd64-51b6-7004-8a88-e8013f776496/latest).
   - name: Survey
@@ -41057,6 +41976,7 @@ tags:
   - name: Survey Response
   - name: Transaction
   - name: Transaction Event
+    description: Transaction Event Actions are [available here](https://app.hex.tech/5da8c0c4-952b-48c4-8d99-d85de0986b86/app/0195ed78-8e2f-7002-ba05-e2a5dfc0debc/latest).
   - name: Case
     description: Part of the [https://care.211cs.org](https://care.211cs.org) API - this API is technically outside of the Nexus API, but complements it by giving us direct access to cases (rebuilt transaction events) and projects (a unique data structure).
   - name: Project
@@ -41069,3 +41989,4 @@ tags:
   - name: Application
     description: Application is an interface to see issued service accounts that connect to other applications like in-house analytics and dev sandboxes.
   - name: Funding Source
+    description: Funding source is connected via a many-to-many relationship with agency and demostrates the funder-program dynamic of philanthropy.
