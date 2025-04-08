@@ -27,15 +27,25 @@ jobs:
 
       - name: Commit and push OpenAPI docs
         env:
-          GH_TOKEN: ${{ secrets.GH_PAT }}
+          GH_TOKEN: ${{ secrets.GH_PAT }} # ensure this secret holds a PAT with the repo scope!
         run: |
           if ls docs/*.json 1> /dev/null 2>&1; then
-            git config --global user.name 'github-actions[bot]'
-            git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+            # Use your GitHub username and email (associated with the PAT) rather than the default github-actions[bot]
+            git config --global user.name 'davis3tnpolitics'
+            git config --global user.email 'trentondavis2@gmail.com'
+
+            # Reset remote URL to include the PAT for authentication; ensure correct repository is set.
             git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
+
             git add docs/*.json
-            git commit -m "Auto-generate OpenAPI docs from Postman"
-            git push
+
+            # It’s a good idea to check if there’s any change before committing
+            if git diff-index --quiet HEAD --; then
+              echo "No changes to commit."
+            else
+              git commit -m "Auto-generate OpenAPI docs from Postman"
+              git push origin HEAD:${{ github.ref }}
+            fi
           else
             echo "⚠️ No OpenAPI files to commit"
           fi
