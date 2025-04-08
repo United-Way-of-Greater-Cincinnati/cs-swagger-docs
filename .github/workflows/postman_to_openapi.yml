@@ -26,9 +26,16 @@ jobs:
         run: node convert-postman.js
 
       - name: Commit and push OpenAPI docs
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add docs/*.json
-          git commit -m "Auto-generate OpenAPI docs from Postman" || echo "No changes to commit"
-          git push
+          if ls docs/*.json 1> /dev/null 2>&1; then
+            git config --global user.name 'github-actions[bot]'
+            git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+            git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
+            git add docs/*.json
+            git commit -m "Auto-generate OpenAPI docs from Postman"
+            git push
+          else
+            echo "⚠️ No OpenAPI files to commit"
+          fi
