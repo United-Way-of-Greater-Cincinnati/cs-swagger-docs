@@ -1,0 +1,11 @@
+{
+  "name": "postman-openapi-converter",
+  "version": "1.0.0",
+  "description": "Convert Postman collections to OpenAPI 3.0",
+  "scripts": {
+    "convert": "node convert-postman.js"
+  },
+  "dependencies": {
+    "postman2openapi": "^1.2.1"
+  }
+}
