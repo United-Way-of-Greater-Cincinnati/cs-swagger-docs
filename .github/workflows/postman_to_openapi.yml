@@ -47,7 +47,7 @@ jobs:
             if git diff-index --quiet HEAD --; then
               echo "No changes to commit."
             else
-              git commit -m "Auto-generate OpenAPI docs from Postman"
+              git commit -m "Auto-generate OpenAPI docs from Postman [skip ci]"
               git push origin HEAD:${{ github.ref }}
             fi
           else
