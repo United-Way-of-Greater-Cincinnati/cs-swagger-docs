@@ -1,0 +1,590 @@
+{
+	"info": {
+		"_postman_id": "22e411b7-1e10-4287-9ee9-6109164b38f1",
+		"name": "CS Care API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "42620355-22e411b7-1e10-4287-9ee9-6109164b38f1"
+	},
+	"item": [
+		{
+			"name": "Case",
+			"item": [
+				{
+					"name": "GET Cases by Project",
+					"id": "531b1169-eb20-4c3d-b1c4-03e8cb5461a1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://care.211cs.org/api/external/cases?projectId=90d44b3b-8a4b-48be-aab1-e261b170841f",
+							"protocol": "https",
+							"host": [
+								"care",
+								"211cs",
+								"org"
+							],
+							"path": [
+								"api",
+								"external",
+								"cases"
+							],
+							"query": [
+								{
+									"key": "projectId",
+									"value": "90d44b3b-8a4b-48be-aab1-e261b170841f"
+								}
+							]
+						},
+						"description": "#### Request\n\nThe request requires a `projectId` query param to pull cases. If you do not submit a project ID, you'll receive an error.\n\nThe endpoint retrieves a list of cases from the specified project ID. The response is a JSON object containing an array of items, where each item represents a case. Each case object includes various attributes such as `id`, `code`, source, creation and closure timestamps, `intake survey details`, `profile` and `contact information`, `status`, assigned user and organization, and more. The `meta` object provides information about the total number of items, current page, and pagination details."
+					},
+					"response": [
+						{
+							"id": "9e253bbf-e7d4-4ab9-b740-d40820ce99d0",
+							"name": "GET Cases Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://care.211cs.org/api/external/cases?projectId=6fd556c5-3916-444a-b872-b48525acd653",
+									"protocol": "https",
+									"host": [
+										"care",
+										"211cs",
+										"org"
+									],
+									"path": [
+										"api",
+										"external",
+										"cases"
+									],
+									"query": [
+										{
+											"key": "projectId",
+											"value": "6fd556c5-3916-444a-b872-b48525acd653"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 18 Mar 2025 19:49:49 GMT",
+									"uuid": "f18b4ff0-9761-4f8c-9dbf-a4ea9e21f014"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"uuid": "5a2abec5-a067-4c1a-a6df-5ee9ff90f08c"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"uuid": "671dedc4-ba13-40cb-b1fe-a4696a1efdb2"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"uuid": "e3bb051f-d638-49da-9871-eecf520a6986"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "https://care.211cs.org",
+									"uuid": "82f01d07-8e73-4633-bdb7-ed82b5cfc116"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding",
+									"uuid": "b182ac71-f914-472a-b5d4-7e601c29b418"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin",
+									"uuid": "1b174c0a-860d-429e-90e2-d1afdf0911ad"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin",
+									"uuid": "e6e51d79-8ac2-466b-b5ec-3299d2284099"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1",
+									"uuid": "30182562-90ee-458e-ae46-c3ac01b9159d"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer",
+									"uuid": "f6e38cc5-5683-40a4-a877-4e48ac04e75d"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"uuid": "cbed042f-ec1d-4cbb-94ef-c285ffadcbcf"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"uuid": "bd172216-cb47-47fe-a1c7-7b2c940fe322"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"uuid": "78505dc3-d3cc-4620-ad9c-babc908813a3"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"uuid": "eaeea259-0808-4151-9545-de5eca328053"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none",
+									"uuid": "f8115aa9-0754-440f-bc90-df9382d926bd"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0",
+									"uuid": "790b1c34-0b34-4df4-a50e-a222f847a39b"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2100-NFC4uA7oSfURfQpVdn6XWORfqvI\"",
+									"uuid": "aa1d7c3e-5af4-45aa-acdb-6338b5737c89"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip",
+									"uuid": "b07ecdbf-4423-465e-b9b4-89909af73410"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"items\": [\n        {\n            \"id\": \"9ca7315e-ada8-4846-ad6a-34aa776024da\",\n            \"code\": \"KRFP3N3P3\",\n            \"source\": \"contact\",\n            \"createdAt\": \"2024-11-22T17:13:10.177Z\",\n            \"closedAt\": null,\n            \"intakeSurvey\": {\n                \"end\": \"2024-11-22T12:13:00.509-05:00\",\n                \"email\": null,\n                \"start\": \"2024-11-22T12:13:00.508-05:00\",\n                \"givenName\": null,\n                \"telephone\": null,\n                \"familyName\": null,\n                \"Please_do_not_submit_survey\": null,\n                \"Preferred_day_time_of_contact\": null,\n                \"Called_regarding_kynect_resour\": \"yes\",\n                \"Caller_consented_to_profile_cr\": \"yes\"\n            },\n            \"profileId\": \"HxezBVXjrI8mOwOyIy1ygE0SxAKDjl\",\n            \"transactionId\": \"Hxg5oVvKaSWEDdb6Fl1X3jWuL3m2JQ\",\n            \"caseAttributes\": [],\n            \"status\": {\n                \"id\": \"e7252d58-d7bc-4d16-80ac-1c43e45a2c94\",\n                \"name\": \"New Case Created\",\n                \"isFinal\": false,\n                \"archived\": false\n            },\n            \"statusReason\": null,\n            \"assignedUser\": null,\n            \"assignedOrganization\": null,\n            \"contact\": {\n                \"uid\": \"5JZPRNA\",\n                \"transactionId\": \"Hx9PbxwmXtmBdwBzsvWEVaytrkgvo2\",\n                \"agent\": {\n                    \"name\": \"Johnathan Doe\"\n                }\n            },\n            \"name\": \"Jason Borne\",\n            \"profile\": {\n                \"id\": \"HxezBVXjrI8mOwOyIy1ygE0SxAKDjl\",\n                \"survey\": {\n                    \"givenName\": \"Jason\",\n                    \"familyName\": \"Borne\",\n                    \"birthDate\": \"1982-02-07\",\n                    \"email\": \"jasonborne@gmail.com\",\n                    \"postalCode\": \"45227\",\n                    \"knowsLanguage\": \"english\",\n                    \"end\": \"2024-11-22T12:06:22.861-05:00\",\n                    \"race\": \"caucasian_white\",\n                    \"State\": \"ohio\",\n                    \"start\": \"2024-11-22T12:03:09.265-05:00\",\n                    \"gender\": \"man\",\n                    \"ethnicity\": \"option_2\",\n                    \"telephone\": \"0000000000\",\n                    \"streetAddress\": \"12 Main Street\",\n                    \"Household_Size\": \"1\",\n                    \"Housing_Status\": \"renting\",\n                    \"addressLocality\": \"Cincinnati\",\n                    \"Minors_in_Household\": \"no\",\n                    \"City_of_Cincinnati_Resident\": \"yes\",\n                    \"Caller_consented_to_profile_cr\": \"yes\",\n                    \"_Search_UWGC_211_Add_tinyurl_com_211addy\": null,\n                    \"_span_style_color_gr_create_profile_span\": null,\n                    \"_span_style_color_bl_ill_not_display_span\": null,\n                    \"_span_style_color_cr_t_cannot_verify_span\": null\n                }\n            }\n        },\n        {\n            \"id\": \"b876f434-3b9d-45b0-981f-9cd0d446c147\",\n            \"code\": \"KRCAS5EX3\",\n            \"source\": \"contact\",\n            \"createdAt\": \"2024-09-03T19:39:27.635Z\",\n            \"closedAt\": null,\n            \"intakeSurvey\": {\n                \"end\": \"2024-09-03T15:38:42.226-04:00\",\n                \"email\": null,\n                \"start\": \"2024-09-03T15:38:42.226-04:00\",\n                \"givenName\": null,\n                \"telephone\": null,\n                \"familyName\": null,\n                \"Please_do_not_submit_survey\": null,\n                \"Preferred_day_time_of_contact\": \"Available after 12:00 Mondays and Wednesdays.\",\n                \"Called_regarding_kynect_resour\": \"yes\",\n                \"Caller_consented_to_profile_cr\": \"yes\"\n            },\n            \"profileId\": \"Hxbm1dAXeIzbrd1LU13DWgQHJNBgOG\",\n            \"transactionId\": \"HxxnnoXOpIEQEvV3tm2zENBSe3xmOK\",\n            \"caseAttributes\": [],\n            \"status\": {\n                \"id\": \"e7252d58-d7bc-4d16-80ac-1c43e45a2c94\",\n                \"name\": \"New Case Created\",\n                \"isFinal\": false,\n                \"archived\": false\n            },\n            \"statusReason\": null,\n            \"assignedUser\": null,\n            \"assignedOrganization\": null,\n            \"contact\": {\n                \"uid\": \"3B5VRD6\",\n                \"transactionId\": \"HxgWE04GpTWbKd8vHej45L1tpDr3PO\",\n                \"agent\": {\n                    \"name\": \"Janie Doe\"\n                }\n            },\n            \"name\": \"Anonymous\",\n            \"profile\": {\n                \"id\": \"Hxbm1dAXeIzbrd1LU13DWgQHJNBgOG\",\n                \"survey\": {\n                    \"givenName\": null,\n                    \"familyName\": null,\n                    \"birthDate\": null,\n                    \"email\": null,\n                    \"postalCode\": \"45231\",\n                    \"telephone\": null,\n                    \"knowsLanguage\": \"english\",\n                    \"end\": \"2024-11-13T05:22:14.855-06:00\",\n                    \"race\": null,\n                    \"State\": null,\n                    \"start\": \"2024-08-23T10:12:59.630-04:00\",\n                    \"gender\": null,\n                    \"ethnicity\": null,\n                    \"streetAddress\": null,\n                    \"CAGIS_Verified\": \"no\",\n                    \"Household_Size\": null,\n                    \"addressLocality\": null,\n                    \"Minors_in_Household\": null,\n                    \"City_of_Cincinnati_Resident\": \"no\",\n                    \"Caller_consented_to_profile_cr\": \"no\",\n                    \"_Search_CAGIS_Online_n_co_org_cagisonline\": null,\n                    \"Housing_Status\": null,\n                    \"_Search_UWGC_211_Add_tinyurl_com_211addy\": null,\n                    \"_span_style_color_gr_create_profile_span\": null,\n                    \"_span_style_color_bl_ill_not_display_span\": null,\n                    \"_span_style_color_cr_t_cannot_verify_span\": null\n                }\n            }\n        }\n    ],\n    \"meta\": {\n        \"totalItems\": 2,\n        \"itemCount\": 2,\n        \"itemsPerPage\": 25,\n        \"totalPages\": 1,\n        \"currentPage\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "POST Case",
+					"id": "9340c219-2444-4643-8b1d-76300f2f9300",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"projectId\": \"90d44b3b-8a4b-48be-aab1-e261b170841f\",\r\n    \"source\": \"string\",\r\n    \"status\": {\r\n        \"id\": \"uui6003ac1a-4c02-494e-b9b1-380d902b38eed\",\r\n        \"reason\": \"New Case Created\"\r\n    },\r\n    \"surveyData\": {\r\n        \"intake\": {\r\n            \"field_1\": \"value1\",\r\n        },\r\n        \"demographic\": {\r\n            \"givenName\": \"John\",\r\n            \"familyName\": \"Doe\",\r\n        ...\r\n        }\r\n    },\r\n    \"notes\": string[]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://care.211cs.org/api/external/cases",
+							"protocol": "https",
+							"host": [
+								"care",
+								"211cs",
+								"org"
+							],
+							"path": [
+								"api",
+								"external",
+								"cases"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "99aa4184-fec2-4787-bc33-c3b9fb15b3f0",
+							"name": "Create Case Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"projectId\": \"90d44b3b-8a4b-48be-aab1-e261b170841f\",\r\n    \"source\": \"contact\",\r\n    \"surveyData\": {\r\n        \"intake\": {\r\n            \"end\": \"\",\r\n            \"race\": \"\",\r\n            \"State\": \"\",\r\n            \"email\": \"luke.skywalker@jediknights.com\",\r\n            \"start\": \"\",\r\n            \"gender\": \"\",\r\n            \"birthDate\": \"1977-12-07\",\r\n            \"ethnicity\": \"\",\r\n            \"givenName\": \"Luke\",\r\n            \"telephone\": \"1323555885\",\r\n            \"familyName\": \"Skywalker\",\r\n            \"postalCode\": \"41011\",\r\n            \"knowsLanguage\": \"english\",\r\n            \"streetAddress\": \"\",\r\n            \"Household_Size\": \"\",\r\n            \"Housing_Status\": \"\",\r\n            \"addressLocality\": \"\",\r\n            \"expectant_parent\": \"\",\r\n            \"minors_age_0_to_5\": \"\",\r\n            \"Minors_in_Household\": \"\",\r\n            \"City_of_Cincinnati_Resident\": \"\",\r\n            \"Caller_consented_to_profile_cr\": \"\",\r\n            \"_Search_UWGC_211_Add_tinyurl_com_211addy\": \"\",\r\n            \"_span_style_color_gr_create_profile_span\": \"\",\r\n            \"_span_style_color_bl_ill_not_display_span\": \"\",\r\n            \"_span_style_color_cr_t_cannot_verify_span\": \"\"\r\n        }\r\n    },\r\n    \"notes\": [\r\n        \"This is a star wars case!\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://care.211cs.org/api/external/cases",
+									"protocol": "https",
+									"host": [
+										"care",
+										"211cs",
+										"org"
+									],
+									"path": [
+										"api",
+										"external",
+										"cases"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 03 Apr 2025 15:01:15 GMT",
+									"uuid": "33ab4f47-c64e-4e7c-ac1b-1e76351ecd91"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"uuid": "4468debf-29a0-4c38-b3da-11bd962d74d2"
+								},
+								{
+									"key": "Content-Length",
+									"value": "147",
+									"uuid": "342b7245-120c-4999-bbf5-fd33d2f84330"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"uuid": "b3ab70ba-792e-4b28-be14-164b276a0335"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "https://care.211cs.org",
+									"uuid": "5c1427fe-f3cf-412e-9838-1ea1fbc34904"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding",
+									"uuid": "a09a8692-3e39-4a06-9754-8aaa6e4da2e0"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin",
+									"uuid": "5e7d1f60-6e40-4817-9644-19dd769bbf0a"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin",
+									"uuid": "78422e01-9a1e-44c0-938e-c3328248c823"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1",
+									"uuid": "67e6f212-1b97-4245-ae32-72518d7fc5f5"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer",
+									"uuid": "8acec616-42cd-43c0-ae4e-9fcf4e99b0f1"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"uuid": "180d8f0d-aacc-4550-b23d-81747194d7d7"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"uuid": "35927f8d-f805-41ba-96c1-245488266814"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"uuid": "bb54aae3-d5d3-4590-aa81-a12d452294fb"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"uuid": "b9bfcd97-c34e-4d2a-b800-f1e1583bd9a9"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none",
+									"uuid": "b61fc9a5-3378-4baf-a670-1b4ed3d119fe"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0",
+									"uuid": "d88f8853-bb16-436b-a01f-77d082b9d210"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"93-jH4TzwpahQAYZEOwgozOgZCb594\"",
+									"uuid": "7e5e3a77-2c9a-4e78-a4d7-2ca8e6437bb2"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"caseId\": \"1c85f3a6-dda0-44cf-811b-803e2a519f15\",\n    \"caseTransactionId\": \"HxbyN1g0zFzzwqXXcg19bGPH8aW29v\",\n    \"profileId\": \"Hxrq6N581SweP89dFXGr1LaUrLQ5o9\"\n}"
+						}
+					]
+				}
+			],
+			"id": "c5ae8e29-0e12-4d0f-9df9-52eddc5e8a0a",
+			"description": "Part of the [https://care.211cs.org](https://care.211cs.org) API - this API is technically outside of the Nexus API, but complements it by giving us direct access to cases (rebuilt transaction events) and projects (a unique data structure).",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1dee12dc-8ae4-4b05-8338-d32c04967b8b",
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "47a2c4f2-cbe1-4669-b6b9-218e528a9a23",
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Project",
+			"item": [
+				{
+					"name": "GET Projects",
+					"id": "0053a930-6e80-403a-9ef4-73627bf9a364",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://care.211cs.org/api/external/projects",
+							"protocol": "https",
+							"host": [
+								"care",
+								"211cs",
+								"org"
+							],
+							"path": [
+								"api",
+								"external",
+								"projects"
+							]
+						},
+						"description": "The endpoint [https://care.211cs.org/api/external/projects](https://care.211cs.org/api/external/projects) responds with a JSON object containing the following properties:\n\n- `id` (string): The unique identifier for the project.\n    \n- `name` (string): The name of the project.\n    \n- `shortName` (string): The short name or abbreviation for the project.\n    \n- `organizationId` (string): The identifier of the organization associated with the project.\n    \n- `overview` (string): A brief overview or description of the project.\n    \n- `surveyId` (string): The identifier of the survey associated with the project.\n    \n- `relatedResourceIds` (array): An array of identifiers for related resources.\n    \n- `createdAt` (string): The timestamp indicating when the project was created.\n    \n- `updatedAt` (string): The timestamp indicating when the project was last updated.\n    \n- `deleted` (boolean): Indicates if the project is deleted or not.\n    \n- `networkId` (string): The identifier of the network associated with the project.\n    \n- `casesTableSettings` (object): Settings related to cases table for the project.\n    \n- `prefix` (string): The prefix associated with the project.\n    \n- `publicIntakeEnabled` (boolean): Indicates if public intake is enabled for the project.\n    \n- `publicIntakeHash` (string): The hash value associated with public intake.\n    \n- `publicIntakeThankYouUrl` (string): The URL for the thank you page after public intake submission.\n    \n- `csContactIntakeEnabled` (boolean): Indicates if CS contact intake is enabled for the project.\n    \n- `instructions` (string): Instructions related to the project.\n    \n- `referralDeliverySettings` (object): Settings related to referral delivery via SMS and email.\n    \n- `csContactIntakeDisplayControl` (object): Display control settings for CS contact intake.\n    \n- `carePlanEnabled` (boolean): Indicates if care plan is enabled for the project.\n    \n- `automationsEnabled` (boolean): Indicates if automations are enabled for the project.\n    \n- `referralTemplateId` (string): The identifier of the referral template associated with the project.\n    \n- `notifyProjectUsersEnabled` (boolean): Indicates if notification for project users is enabled.\n    \n- `publicIntakeSources` (array): An array of sources for public intake.\n    \n- `statuses` (array): An array of statuses with their unique identifiers, names, and flags.\n    \n- `followUpSurvey` (string): The identifier of the follow-up survey associated with the project.\n    \n\nPlease note that the response may contain additional properties based on the specific project details."
+					},
+					"response": [
+						{
+							"id": "f50d27ab-fedb-4839-a0e0-46f1bba40577",
+							"name": "GET Projects Data Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://care.211cs.org/api/external/projects",
+									"protocol": "https",
+									"host": [
+										"care",
+										"211cs",
+										"org"
+									],
+									"path": [
+										"api",
+										"external",
+										"projects"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 18 Mar 2025 19:46:11 GMT",
+									"uuid": "49a9ac99-cb2f-4f89-b151-d81373c1c979"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"uuid": "60e4e9c9-43bf-4ca9-97d4-d55c756a3b17"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"uuid": "652c6b13-814e-43fc-8e6a-effe1ef0ae2e"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"uuid": "e92dcd88-e58b-4423-a1e6-b303f2222161"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "https://care.211cs.org",
+									"uuid": "cbfe1be2-dffe-405f-8f4b-aa7767f8e942"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding",
+									"uuid": "80f34db8-da4b-4638-881b-a393c1bdf5ec"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin",
+									"uuid": "91564dd8-324f-444a-9fdc-8e515441942d"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin",
+									"uuid": "7109aa92-ce27-44f6-9906-d6b31b721038"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1",
+									"uuid": "8bda467c-de1b-407d-9f11-c725d75b07dc"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer",
+									"uuid": "736917d5-90f9-44e3-b260-5082e1fd7495"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"uuid": "d159f1ee-9c40-4bcd-b2f2-6718bc631bc6"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"uuid": "7eb876b6-0897-46f8-85f8-113f5874a96f"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"uuid": "117980a4-0500-439f-8c28-0e431964d90e"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"uuid": "1caab687-9edd-4807-9b66-edabbfe06ce9"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none",
+									"uuid": "46e96c55-ea2d-4e61-b76e-dc2a7b290c00"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0",
+									"uuid": "3d6472b5-e4b7-423d-b8b8-bbcf3cda0b20"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ce2b-q2/Gokx5vk6t7O2JpJVlBL2CFmI\"",
+									"uuid": "a612c5d6-bf3e-4d3b-8986-17120d35d8a9"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip",
+									"uuid": "680523c1-72c7-4c6c-aef7-7b94b27254f9"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"5f936754-a95f-4439-8204-bb01565e8204\",\n        \"name\": \"Migration Test Project\",\n        \"shortName\": \"For Testing\",\n        \"organizationId\": \"HxPKoLwK7H0PDOq7iWoyyNWfB79KGp\",\n        \"overview\": \"This project is simply to preview resource search in CS Care\",\n        \"surveyId\": \"HxD3w5k9xHBlop0wUBBjmJkH13ByWn\",\n        \"relatedResourceIds\": [],\n        \"createdAt\": \"2024-05-17T17:35:23.634Z\",\n        \"updatedAt\": \"2024-05-17T17:35:23.634Z\",\n        \"deleted\": null,\n        \"networkId\": \"Hx72rpOGu5mNN1Vh7aEj92UE5JXww\",\n        \"casesTableSettings\": null,\n        \"prefix\": \"MTP\",\n        \"publicIntakeEnabled\": true,\n        \"publicIntakeHash\": \"1d8538016797b19e65a1d5b8c6cc05941313c3b47e077b630e247458260d1a1a\",\n        \"publicIntakeThankYouUrl\": null,\n        \"csContactIntakeEnabled\": false,\n        \"instructions\": \"\",\n        \"referralDeliverySettings\": {\n            \"sms\": true,\n            \"email\": true\n        },\n        \"csContactIntakeDisplayControl\": {},\n        \"carePlanEnabled\": false,\n        \"automationsEnabled\": false,\n        \"referralTemplateId\": null,\n        \"notifyProjectUsersEnabled\": false,\n        \"publicIntakeSources\": [],\n        \"statuses\": [\n            {\n                \"id\": \"ce65349b-5477-4899-9f6a-6db7ac42b95c\",\n                \"name\": \"New Case Created\",\n                \"isInitial\": true,\n                \"isFinal\": false,\n                \"archived\": false\n            },\n            {\n                \"id\": \"d75aad00-ea6a-4278-a60d-e7bbcfb51835\",\n                \"name\": \"Address - Invalid\",\n                \"isInitial\": false,\n                \"isFinal\": false,\n                \"archived\": false\n            },\n            {\n                \"id\": \"9c89f157-63ec-4ae9-9c45-fd66bfae589d\",\n                \"name\": \"Case Closed\",\n                \"isInitial\": false,\n                \"isFinal\": true,\n                \"archived\": false\n            }\n        ],\n        \"followUpSurvey\": null\n    }\n]"
+						}
+					]
+				}
+			],
+			"id": "bd94ebd2-00db-4605-aeaa-e322b9e00794",
+			"description": "Part of the [https://care.211cs.org](https://care.211cs.org) API - Projects are a CS Care data model that governs who has access to individual cases. It also creates a permission structure for users that are \"added\" to a project.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "73be5ee9-30e0-4d55-85cb-b82703dab052",
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "513b3cab-1d35-4d72-ad34-fe591de3e7e9",
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{care_api_key}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "{{auth_header}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "85457305-bd31-4fb2-8316-bb9b060fbf69",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "09b33b4b-02e0-4e49-8b32-4914bf6d101a",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "c67ab450-a487-4ffa-9bf6-a44a41c2ae52",
+			"key": "auth_header",
+			"value": "Authorization",
+			"type": "string"
+		},
+		{
+			"id": "903902c5-0d1c-4083-bc00-e074de084cc6",
+			"key": "test_project_id",
+			"value": "90d44b3b-8a4b-48be-aab1-e261b170841f",
+			"type": "string"
+		}
+	]
+}
