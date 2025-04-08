@@ -1,0 +1,1511 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "CS Care API",
+    "version": "1.0.0",
+    "contact": {}
+  },
+  "servers": [
+    {
+      "url": "https://care.211cs.org"
+    }
+  ],
+  "paths": {
+    "/api/external/cases": {
+      "get": {
+        "tags": [
+          "Case"
+        ],
+        "summary": "GET Cases by Project",
+        "description": "#### Request\n\nThe request requires a `projectId` query param to pull cases. If you do not submit a project ID, you'll receive an error.\n\nThe endpoint retrieves a list of cases from the specified project ID. The response is a JSON object containing an array of items, where each item represents a case. Each case object includes various attributes such as `id`, `code`, source, creation and closure timestamps, `intake survey details`, `profile` and `contact information`, `status`, assigned user and organization, and more. The `meta` object provides information about the total number of items, current page, and pagination details.",
+        "operationId": "getCasesByProject",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "90d44b3b-8a4b-48be-aab1-e261b170841f"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GET Cases Example",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "https://care.211cs.org"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Content-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "gzip"
+                }
+              },
+              "Cross-Origin-Opener-Policy": {
+                "schema": {
+                  "type": "string",
+                  "example": "same-origin"
+                }
+              },
+              "Cross-Origin-Resource-Policy": {
+                "schema": {
+                  "type": "string",
+                  "example": "same-origin"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 18 Mar 2025 19:49:49 GMT"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"2100-NFC4uA7oSfURfQpVdn6XWORfqvI\""
+                }
+              },
+              "Origin-Agent-Cluster": {
+                "schema": {
+                  "type": "string",
+                  "example": "?1"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-referrer"
+                }
+              },
+              "Strict-Transport-Security": {
+                "schema": {
+                  "type": "string",
+                  "example": "max-age=15552000; includeSubDomains"
+                }
+              },
+              "Transfer-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "chunked"
+                }
+              },
+              "Vary": {
+                "schema": {
+                  "type": "string",
+                  "example": "Origin, Accept-Encoding"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "example": "nosniff"
+                }
+              },
+              "X-DNS-Prefetch-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "off"
+                }
+              },
+              "X-Download-Options": {
+                "schema": {
+                  "type": "string",
+                  "example": "noopen"
+                }
+              },
+              "X-Permitted-Cross-Domain-Policies": {
+                "schema": {
+                  "type": "string",
+                  "example": "none"
+                }
+              },
+              "X-XSS-Protection": {
+                "schema": {
+                  "type": "string",
+                  "example": "0"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "assignedOrganization": {
+                            "nullable": true,
+                            "example": null
+                          },
+                          "assignedUser": {
+                            "nullable": true,
+                            "example": null
+                          },
+                          "caseAttributes": {
+                            "type": "array",
+                            "items": {},
+                            "example": []
+                          },
+                          "closedAt": {
+                            "nullable": true,
+                            "example": null
+                          },
+                          "code": {
+                            "type": "string",
+                            "example": "KRFP3N3P3"
+                          },
+                          "contact": {
+                            "type": "object",
+                            "properties": {
+                              "agent": {
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "type": "string",
+                                    "example": "Johnathan Doe"
+                                  }
+                                }
+                              },
+                              "transactionId": {
+                                "type": "string",
+                                "example": "Hx9PbxwmXtmBdwBzsvWEVaytrkgvo2"
+                              },
+                              "uid": {
+                                "type": "string",
+                                "example": "5JZPRNA"
+                              }
+                            }
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "example": "2024-11-22T17:13:10.177Z"
+                          },
+                          "id": {
+                            "type": "string",
+                            "example": "9ca7315e-ada8-4846-ad6a-34aa776024da"
+                          },
+                          "intakeSurvey": {
+                            "type": "object",
+                            "properties": {
+                              "Called_regarding_kynect_resour": {
+                                "type": "string",
+                                "example": "yes"
+                              },
+                              "Caller_consented_to_profile_cr": {
+                                "type": "string",
+                                "example": "yes"
+                              },
+                              "Please_do_not_submit_survey": {
+                                "nullable": true,
+                                "example": null
+                              },
+                              "Preferred_day_time_of_contact": {
+                                "type": "string",
+                                "nullable": true,
+                                "example": null
+                              },
+                              "email": {
+                                "nullable": true,
+                                "example": null
+                              },
+                              "end": {
+                                "type": "string",
+                                "example": "2024-11-22T12:13:00.509-05:00"
+                              },
+                              "familyName": {
+                                "nullable": true,
+                                "example": null
+                              },
+                              "givenName": {
+                                "nullable": true,
+                                "example": null
+                              },
+                              "start": {
+                                "type": "string",
+                                "example": "2024-11-22T12:13:00.508-05:00"
+                              },
+                              "telephone": {
+                                "nullable": true,
+                                "example": null
+                              }
+                            }
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Jason Borne"
+                          },
+                          "profile": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "HxezBVXjrI8mOwOyIy1ygE0SxAKDjl"
+                              },
+                              "survey": {
+                                "type": "object",
+                                "properties": {
+                                  "CAGIS_Verified": {
+                                    "type": "string",
+                                    "example": "no"
+                                  },
+                                  "Caller_consented_to_profile_cr": {
+                                    "type": "string",
+                                    "example": "yes"
+                                  },
+                                  "City_of_Cincinnati_Resident": {
+                                    "type": "string",
+                                    "example": "yes"
+                                  },
+                                  "Household_Size": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "example": "1"
+                                  },
+                                  "Housing_Status": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "example": "renting"
+                                  },
+                                  "Minors_in_Household": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "example": "no"
+                                  },
+                                  "State": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "example": "ohio"
+                                  },
+                                  "_Search_CAGIS_Online_n_co_org_cagisonline": {
+                                    "nullable": true,
+                                    "example": null
+                                  },
+                                  "_Search_UWGC_211_Add_tinyurl_com_211addy": {
+                                    "nullable": true,
+                                    "example": null
+                                  },
+                                  "_span_style_color_bl_ill_not_display_span": {
+                                    "nullable": true,
+                                    "example": null
+                                  },
+                                  "_span_style_color_cr_t_cannot_verify_span": {
+                                    "nullable": true,
+                                    "example": null
+                                  },
+                                  "_span_style_color_gr_create_profile_span": {
+                                    "nullable": true,
+                                    "example": null
+                                  },
+                                  "addressLocality": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "example": "Cincinnati"
+                                  },
+                                  "birthDate": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "example": "1982-02-07"
+                                  },
+                                  "email": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "example": "jasonborne@gmail.com"
+                                  },
+                                  "end": {
+                                    "type": "string",
+                                    "example": "2024-11-22T12:06:22.861-05:00"
+                                  },
+                                  "ethnicity": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "example": "option_2"
+                                  },
+                                  "familyName": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "example": "Borne"
+                                  },
+                                  "gender": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "example": "man"
+                                  },
+                                  "givenName": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "example": "Jason"
+                                  },
+                                  "knowsLanguage": {
+                                    "type": "string",
+                                    "example": "english"
+                                  },
+                                  "postalCode": {
+                                    "type": "string",
+                                    "example": "45227"
+                                  },
+                                  "race": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "example": "caucasian_white"
+                                  },
+                                  "start": {
+                                    "type": "string",
+                                    "example": "2024-11-22T12:03:09.265-05:00"
+                                  },
+                                  "streetAddress": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "example": "12 Main Street"
+                                  },
+                                  "telephone": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "example": "0000000000"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "profileId": {
+                            "type": "string",
+                            "example": "HxezBVXjrI8mOwOyIy1ygE0SxAKDjl"
+                          },
+                          "source": {
+                            "type": "string",
+                            "example": "contact"
+                          },
+                          "status": {
+                            "type": "object",
+                            "properties": {
+                              "archived": {
+                                "type": "boolean",
+                                "example": false
+                              },
+                              "id": {
+                                "type": "string",
+                                "example": "e7252d58-d7bc-4d16-80ac-1c43e45a2c94"
+                              },
+                              "isFinal": {
+                                "type": "boolean",
+                                "example": false
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "New Case Created"
+                              }
+                            }
+                          },
+                          "statusReason": {
+                            "nullable": true,
+                            "example": null
+                          },
+                          "transactionId": {
+                            "type": "string",
+                            "example": "Hxg5oVvKaSWEDdb6Fl1X3jWuL3m2JQ"
+                          }
+                        }
+                      },
+                      "example": [
+                        {
+                          "assignedOrganization": null,
+                          "assignedUser": null,
+                          "caseAttributes": [],
+                          "closedAt": null,
+                          "code": "KRFP3N3P3",
+                          "contact": {
+                            "agent": {
+                              "name": "Johnathan Doe"
+                            },
+                            "transactionId": "Hx9PbxwmXtmBdwBzsvWEVaytrkgvo2",
+                            "uid": "5JZPRNA"
+                          },
+                          "createdAt": "2024-11-22T17:13:10.177Z",
+                          "id": "9ca7315e-ada8-4846-ad6a-34aa776024da",
+                          "intakeSurvey": {
+                            "Called_regarding_kynect_resour": "yes",
+                            "Caller_consented_to_profile_cr": "yes",
+                            "Please_do_not_submit_survey": null,
+                            "Preferred_day_time_of_contact": null,
+                            "email": null,
+                            "end": "2024-11-22T12:13:00.509-05:00",
+                            "familyName": null,
+                            "givenName": null,
+                            "start": "2024-11-22T12:13:00.508-05:00",
+                            "telephone": null
+                          },
+                          "name": "Jason Borne",
+                          "profile": {
+                            "id": "HxezBVXjrI8mOwOyIy1ygE0SxAKDjl",
+                            "survey": {
+                              "Caller_consented_to_profile_cr": "yes",
+                              "City_of_Cincinnati_Resident": "yes",
+                              "Household_Size": "1",
+                              "Housing_Status": "renting",
+                              "Minors_in_Household": "no",
+                              "State": "ohio",
+                              "_Search_UWGC_211_Add_tinyurl_com_211addy": null,
+                              "_span_style_color_bl_ill_not_display_span": null,
+                              "_span_style_color_cr_t_cannot_verify_span": null,
+                              "_span_style_color_gr_create_profile_span": null,
+                              "addressLocality": "Cincinnati",
+                              "birthDate": "1982-02-07",
+                              "email": "jasonborne@gmail.com",
+                              "end": "2024-11-22T12:06:22.861-05:00",
+                              "ethnicity": "option_2",
+                              "familyName": "Borne",
+                              "gender": "man",
+                              "givenName": "Jason",
+                              "knowsLanguage": "english",
+                              "postalCode": "45227",
+                              "race": "caucasian_white",
+                              "start": "2024-11-22T12:03:09.265-05:00",
+                              "streetAddress": "12 Main Street",
+                              "telephone": "0000000000"
+                            }
+                          },
+                          "profileId": "HxezBVXjrI8mOwOyIy1ygE0SxAKDjl",
+                          "source": "contact",
+                          "status": {
+                            "archived": false,
+                            "id": "e7252d58-d7bc-4d16-80ac-1c43e45a2c94",
+                            "isFinal": false,
+                            "name": "New Case Created"
+                          },
+                          "statusReason": null,
+                          "transactionId": "Hxg5oVvKaSWEDdb6Fl1X3jWuL3m2JQ"
+                        },
+                        {
+                          "assignedOrganization": null,
+                          "assignedUser": null,
+                          "caseAttributes": [],
+                          "closedAt": null,
+                          "code": "KRCAS5EX3",
+                          "contact": {
+                            "agent": {
+                              "name": "Janie Doe"
+                            },
+                            "transactionId": "HxgWE04GpTWbKd8vHej45L1tpDr3PO",
+                            "uid": "3B5VRD6"
+                          },
+                          "createdAt": "2024-09-03T19:39:27.635Z",
+                          "id": "b876f434-3b9d-45b0-981f-9cd0d446c147",
+                          "intakeSurvey": {
+                            "Called_regarding_kynect_resour": "yes",
+                            "Caller_consented_to_profile_cr": "yes",
+                            "Please_do_not_submit_survey": null,
+                            "Preferred_day_time_of_contact": "Available after 12:00 Mondays and Wednesdays.",
+                            "email": null,
+                            "end": "2024-09-03T15:38:42.226-04:00",
+                            "familyName": null,
+                            "givenName": null,
+                            "start": "2024-09-03T15:38:42.226-04:00",
+                            "telephone": null
+                          },
+                          "name": "Anonymous",
+                          "profile": {
+                            "id": "Hxbm1dAXeIzbrd1LU13DWgQHJNBgOG",
+                            "survey": {
+                              "CAGIS_Verified": "no",
+                              "Caller_consented_to_profile_cr": "no",
+                              "City_of_Cincinnati_Resident": "no",
+                              "Household_Size": null,
+                              "Housing_Status": null,
+                              "Minors_in_Household": null,
+                              "State": null,
+                              "_Search_CAGIS_Online_n_co_org_cagisonline": null,
+                              "_Search_UWGC_211_Add_tinyurl_com_211addy": null,
+                              "_span_style_color_bl_ill_not_display_span": null,
+                              "_span_style_color_cr_t_cannot_verify_span": null,
+                              "_span_style_color_gr_create_profile_span": null,
+                              "addressLocality": null,
+                              "birthDate": null,
+                              "email": null,
+                              "end": "2024-11-13T05:22:14.855-06:00",
+                              "ethnicity": null,
+                              "familyName": null,
+                              "gender": null,
+                              "givenName": null,
+                              "knowsLanguage": "english",
+                              "postalCode": "45231",
+                              "race": null,
+                              "start": "2024-08-23T10:12:59.630-04:00",
+                              "streetAddress": null,
+                              "telephone": null
+                            }
+                          },
+                          "profileId": "Hxbm1dAXeIzbrd1LU13DWgQHJNBgOG",
+                          "source": "contact",
+                          "status": {
+                            "archived": false,
+                            "id": "e7252d58-d7bc-4d16-80ac-1c43e45a2c94",
+                            "isFinal": false,
+                            "name": "New Case Created"
+                          },
+                          "statusReason": null,
+                          "transactionId": "HxxnnoXOpIEQEvV3tm2zENBSe3xmOK"
+                        }
+                      ]
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "currentPage": {
+                          "type": "number",
+                          "example": 1
+                        },
+                        "itemCount": {
+                          "type": "number",
+                          "example": 2
+                        },
+                        "itemsPerPage": {
+                          "type": "number",
+                          "example": 25
+                        },
+                        "totalItems": {
+                          "type": "number",
+                          "example": 2
+                        },
+                        "totalPages": {
+                          "type": "number",
+                          "example": 1
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "GET Cases Example": {
+                    "value": {
+                      "items": [
+                        {
+                          "assignedOrganization": null,
+                          "assignedUser": null,
+                          "caseAttributes": [],
+                          "closedAt": null,
+                          "code": "KRFP3N3P3",
+                          "contact": {
+                            "agent": {
+                              "name": "Johnathan Doe"
+                            },
+                            "transactionId": "Hx9PbxwmXtmBdwBzsvWEVaytrkgvo2",
+                            "uid": "5JZPRNA"
+                          },
+                          "createdAt": "2024-11-22T17:13:10.177Z",
+                          "id": "9ca7315e-ada8-4846-ad6a-34aa776024da",
+                          "intakeSurvey": {
+                            "Called_regarding_kynect_resour": "yes",
+                            "Caller_consented_to_profile_cr": "yes",
+                            "Please_do_not_submit_survey": null,
+                            "Preferred_day_time_of_contact": null,
+                            "email": null,
+                            "end": "2024-11-22T12:13:00.509-05:00",
+                            "familyName": null,
+                            "givenName": null,
+                            "start": "2024-11-22T12:13:00.508-05:00",
+                            "telephone": null
+                          },
+                          "name": "Jason Borne",
+                          "profile": {
+                            "id": "HxezBVXjrI8mOwOyIy1ygE0SxAKDjl",
+                            "survey": {
+                              "Caller_consented_to_profile_cr": "yes",
+                              "City_of_Cincinnati_Resident": "yes",
+                              "Household_Size": "1",
+                              "Housing_Status": "renting",
+                              "Minors_in_Household": "no",
+                              "State": "ohio",
+                              "_Search_UWGC_211_Add_tinyurl_com_211addy": null,
+                              "_span_style_color_bl_ill_not_display_span": null,
+                              "_span_style_color_cr_t_cannot_verify_span": null,
+                              "_span_style_color_gr_create_profile_span": null,
+                              "addressLocality": "Cincinnati",
+                              "birthDate": "1982-02-07",
+                              "email": "jasonborne@gmail.com",
+                              "end": "2024-11-22T12:06:22.861-05:00",
+                              "ethnicity": "option_2",
+                              "familyName": "Borne",
+                              "gender": "man",
+                              "givenName": "Jason",
+                              "knowsLanguage": "english",
+                              "postalCode": "45227",
+                              "race": "caucasian_white",
+                              "start": "2024-11-22T12:03:09.265-05:00",
+                              "streetAddress": "12 Main Street",
+                              "telephone": "0000000000"
+                            }
+                          },
+                          "profileId": "HxezBVXjrI8mOwOyIy1ygE0SxAKDjl",
+                          "source": "contact",
+                          "status": {
+                            "archived": false,
+                            "id": "e7252d58-d7bc-4d16-80ac-1c43e45a2c94",
+                            "isFinal": false,
+                            "name": "New Case Created"
+                          },
+                          "statusReason": null,
+                          "transactionId": "Hxg5oVvKaSWEDdb6Fl1X3jWuL3m2JQ"
+                        },
+                        {
+                          "assignedOrganization": null,
+                          "assignedUser": null,
+                          "caseAttributes": [],
+                          "closedAt": null,
+                          "code": "KRCAS5EX3",
+                          "contact": {
+                            "agent": {
+                              "name": "Janie Doe"
+                            },
+                            "transactionId": "HxgWE04GpTWbKd8vHej45L1tpDr3PO",
+                            "uid": "3B5VRD6"
+                          },
+                          "createdAt": "2024-09-03T19:39:27.635Z",
+                          "id": "b876f434-3b9d-45b0-981f-9cd0d446c147",
+                          "intakeSurvey": {
+                            "Called_regarding_kynect_resour": "yes",
+                            "Caller_consented_to_profile_cr": "yes",
+                            "Please_do_not_submit_survey": null,
+                            "Preferred_day_time_of_contact": "Available after 12:00 Mondays and Wednesdays.",
+                            "email": null,
+                            "end": "2024-09-03T15:38:42.226-04:00",
+                            "familyName": null,
+                            "givenName": null,
+                            "start": "2024-09-03T15:38:42.226-04:00",
+                            "telephone": null
+                          },
+                          "name": "Anonymous",
+                          "profile": {
+                            "id": "Hxbm1dAXeIzbrd1LU13DWgQHJNBgOG",
+                            "survey": {
+                              "CAGIS_Verified": "no",
+                              "Caller_consented_to_profile_cr": "no",
+                              "City_of_Cincinnati_Resident": "no",
+                              "Household_Size": null,
+                              "Housing_Status": null,
+                              "Minors_in_Household": null,
+                              "State": null,
+                              "_Search_CAGIS_Online_n_co_org_cagisonline": null,
+                              "_Search_UWGC_211_Add_tinyurl_com_211addy": null,
+                              "_span_style_color_bl_ill_not_display_span": null,
+                              "_span_style_color_cr_t_cannot_verify_span": null,
+                              "_span_style_color_gr_create_profile_span": null,
+                              "addressLocality": null,
+                              "birthDate": null,
+                              "email": null,
+                              "end": "2024-11-13T05:22:14.855-06:00",
+                              "ethnicity": null,
+                              "familyName": null,
+                              "gender": null,
+                              "givenName": null,
+                              "knowsLanguage": "english",
+                              "postalCode": "45231",
+                              "race": null,
+                              "start": "2024-08-23T10:12:59.630-04:00",
+                              "streetAddress": null,
+                              "telephone": null
+                            }
+                          },
+                          "profileId": "Hxbm1dAXeIzbrd1LU13DWgQHJNBgOG",
+                          "source": "contact",
+                          "status": {
+                            "archived": false,
+                            "id": "e7252d58-d7bc-4d16-80ac-1c43e45a2c94",
+                            "isFinal": false,
+                            "name": "New Case Created"
+                          },
+                          "statusReason": null,
+                          "transactionId": "HxxnnoXOpIEQEvV3tm2zENBSe3xmOK"
+                        }
+                      ],
+                      "meta": {
+                        "currentPage": 1,
+                        "itemCount": 2,
+                        "itemsPerPage": 25,
+                        "totalItems": 2,
+                        "totalPages": 1
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Case"
+        ],
+        "summary": "POST Case",
+        "description": "POST Case",
+        "operationId": "postCase",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "notes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "example": "This is a star wars case!"
+                    },
+                    "example": [
+                      "This is a star wars case!"
+                    ]
+                  },
+                  "projectId": {
+                    "type": "string",
+                    "example": "90d44b3b-8a4b-48be-aab1-e261b170841f"
+                  },
+                  "source": {
+                    "type": "string",
+                    "example": "contact"
+                  },
+                  "surveyData": {
+                    "type": "object",
+                    "properties": {
+                      "intake": {
+                        "type": "object",
+                        "properties": {
+                          "Caller_consented_to_profile_cr": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "City_of_Cincinnati_Resident": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "Household_Size": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "Housing_Status": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "Minors_in_Household": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "State": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "_Search_UWGC_211_Add_tinyurl_com_211addy": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "_span_style_color_bl_ill_not_display_span": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "_span_style_color_cr_t_cannot_verify_span": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "_span_style_color_gr_create_profile_span": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "addressLocality": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "birthDate": {
+                            "type": "string",
+                            "example": "1977-12-07"
+                          },
+                          "email": {
+                            "type": "string",
+                            "example": "luke.skywalker@jediknights.com"
+                          },
+                          "end": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "ethnicity": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "expectant_parent": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "familyName": {
+                            "type": "string",
+                            "example": "Skywalker"
+                          },
+                          "gender": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "givenName": {
+                            "type": "string",
+                            "example": "Luke"
+                          },
+                          "knowsLanguage": {
+                            "type": "string",
+                            "example": "english"
+                          },
+                          "minors_age_0_to_5": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "postalCode": {
+                            "type": "string",
+                            "example": "41011"
+                          },
+                          "race": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "start": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "streetAddress": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "telephone": {
+                            "type": "string",
+                            "example": "1323555885"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "POST Case": {
+                  "value": {
+                    "notes": [
+                      "This is a star wars case!"
+                    ],
+                    "projectId": "90d44b3b-8a4b-48be-aab1-e261b170841f",
+                    "source": "contact",
+                    "surveyData": {
+                      "intake": {
+                        "Caller_consented_to_profile_cr": "",
+                        "City_of_Cincinnati_Resident": "",
+                        "Household_Size": "",
+                        "Housing_Status": "",
+                        "Minors_in_Household": "",
+                        "State": "",
+                        "_Search_UWGC_211_Add_tinyurl_com_211addy": "",
+                        "_span_style_color_bl_ill_not_display_span": "",
+                        "_span_style_color_cr_t_cannot_verify_span": "",
+                        "_span_style_color_gr_create_profile_span": "",
+                        "addressLocality": "",
+                        "birthDate": "1977-12-07",
+                        "email": "luke.skywalker@jediknights.com",
+                        "end": "",
+                        "ethnicity": "",
+                        "expectant_parent": "",
+                        "familyName": "Skywalker",
+                        "gender": "",
+                        "givenName": "Luke",
+                        "knowsLanguage": "english",
+                        "minors_age_0_to_5": "",
+                        "postalCode": "41011",
+                        "race": "",
+                        "start": "",
+                        "streetAddress": "",
+                        "telephone": "1323555885"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Create Case Example",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "https://care.211cs.org"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "string",
+                  "example": "147"
+                }
+              },
+              "Cross-Origin-Opener-Policy": {
+                "schema": {
+                  "type": "string",
+                  "example": "same-origin"
+                }
+              },
+              "Cross-Origin-Resource-Policy": {
+                "schema": {
+                  "type": "string",
+                  "example": "same-origin"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Thu, 03 Apr 2025 15:01:15 GMT"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"93-jH4TzwpahQAYZEOwgozOgZCb594\""
+                }
+              },
+              "Origin-Agent-Cluster": {
+                "schema": {
+                  "type": "string",
+                  "example": "?1"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-referrer"
+                }
+              },
+              "Strict-Transport-Security": {
+                "schema": {
+                  "type": "string",
+                  "example": "max-age=15552000; includeSubDomains"
+                }
+              },
+              "Vary": {
+                "schema": {
+                  "type": "string",
+                  "example": "Origin, Accept-Encoding"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "example": "nosniff"
+                }
+              },
+              "X-DNS-Prefetch-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "off"
+                }
+              },
+              "X-Download-Options": {
+                "schema": {
+                  "type": "string",
+                  "example": "noopen"
+                }
+              },
+              "X-Permitted-Cross-Domain-Policies": {
+                "schema": {
+                  "type": "string",
+                  "example": "none"
+                }
+              },
+              "X-XSS-Protection": {
+                "schema": {
+                  "type": "string",
+                  "example": "0"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "caseId": {
+                      "type": "string",
+                      "example": "1c85f3a6-dda0-44cf-811b-803e2a519f15"
+                    },
+                    "caseTransactionId": {
+                      "type": "string",
+                      "example": "HxbyN1g0zFzzwqXXcg19bGPH8aW29v"
+                    },
+                    "profileId": {
+                      "type": "string",
+                      "example": "Hxrq6N581SweP89dFXGr1LaUrLQ5o9"
+                    }
+                  }
+                },
+                "examples": {
+                  "Create Case Example": {
+                    "value": {
+                      "caseId": "1c85f3a6-dda0-44cf-811b-803e2a519f15",
+                      "caseTransactionId": "HxbyN1g0zFzzwqXXcg19bGPH8aW29v",
+                      "profileId": "Hxrq6N581SweP89dFXGr1LaUrLQ5o9"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/external/projects": {
+      "get": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "GET Projects",
+        "description": "The endpoint [https://care.211cs.org/api/external/projects](https://care.211cs.org/api/external/projects) responds with a JSON object containing the following properties:\n\n- `id` (string): The unique identifier for the project.\n    \n- `name` (string): The name of the project.\n    \n- `shortName` (string): The short name or abbreviation for the project.\n    \n- `organizationId` (string): The identifier of the organization associated with the project.\n    \n- `overview` (string): A brief overview or description of the project.\n    \n- `surveyId` (string): The identifier of the survey associated with the project.\n    \n- `relatedResourceIds` (array): An array of identifiers for related resources.\n    \n- `createdAt` (string): The timestamp indicating when the project was created.\n    \n- `updatedAt` (string): The timestamp indicating when the project was last updated.\n    \n- `deleted` (boolean): Indicates if the project is deleted or not.\n    \n- `networkId` (string): The identifier of the network associated with the project.\n    \n- `casesTableSettings` (object): Settings related to cases table for the project.\n    \n- `prefix` (string): The prefix associated with the project.\n    \n- `publicIntakeEnabled` (boolean): Indicates if public intake is enabled for the project.\n    \n- `publicIntakeHash` (string): The hash value associated with public intake.\n    \n- `publicIntakeThankYouUrl` (string): The URL for the thank you page after public intake submission.\n    \n- `csContactIntakeEnabled` (boolean): Indicates if CS contact intake is enabled for the project.\n    \n- `instructions` (string): Instructions related to the project.\n    \n- `referralDeliverySettings` (object): Settings related to referral delivery via SMS and email.\n    \n- `csContactIntakeDisplayControl` (object): Display control settings for CS contact intake.\n    \n- `carePlanEnabled` (boolean): Indicates if care plan is enabled for the project.\n    \n- `automationsEnabled` (boolean): Indicates if automations are enabled for the project.\n    \n- `referralTemplateId` (string): The identifier of the referral template associated with the project.\n    \n- `notifyProjectUsersEnabled` (boolean): Indicates if notification for project users is enabled.\n    \n- `publicIntakeSources` (array): An array of sources for public intake.\n    \n- `statuses` (array): An array of statuses with their unique identifiers, names, and flags.\n    \n- `followUpSurvey` (string): The identifier of the follow-up survey associated with the project.\n    \n\nPlease note that the response may contain additional properties based on the specific project details.",
+        "operationId": "getProjects",
+        "responses": {
+          "200": {
+            "description": "GET Projects Data Example",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "https://care.211cs.org"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Content-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "gzip"
+                }
+              },
+              "Cross-Origin-Opener-Policy": {
+                "schema": {
+                  "type": "string",
+                  "example": "same-origin"
+                }
+              },
+              "Cross-Origin-Resource-Policy": {
+                "schema": {
+                  "type": "string",
+                  "example": "same-origin"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 18 Mar 2025 19:46:11 GMT"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"ce2b-q2/Gokx5vk6t7O2JpJVlBL2CFmI\""
+                }
+              },
+              "Origin-Agent-Cluster": {
+                "schema": {
+                  "type": "string",
+                  "example": "?1"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-referrer"
+                }
+              },
+              "Strict-Transport-Security": {
+                "schema": {
+                  "type": "string",
+                  "example": "max-age=15552000; includeSubDomains"
+                }
+              },
+              "Transfer-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "chunked"
+                }
+              },
+              "Vary": {
+                "schema": {
+                  "type": "string",
+                  "example": "Origin, Accept-Encoding"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "example": "nosniff"
+                }
+              },
+              "X-DNS-Prefetch-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "off"
+                }
+              },
+              "X-Download-Options": {
+                "schema": {
+                  "type": "string",
+                  "example": "noopen"
+                }
+              },
+              "X-Permitted-Cross-Domain-Policies": {
+                "schema": {
+                  "type": "string",
+                  "example": "none"
+                }
+              },
+              "X-XSS-Protection": {
+                "schema": {
+                  "type": "string",
+                  "example": "0"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "automationsEnabled": {
+                        "type": "boolean",
+                        "example": false
+                      },
+                      "carePlanEnabled": {
+                        "type": "boolean",
+                        "example": false
+                      },
+                      "casesTableSettings": {
+                        "nullable": true,
+                        "example": null
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "example": "2024-05-17T17:35:23.634Z"
+                      },
+                      "csContactIntakeDisplayControl": {
+                        "type": "object",
+                        "properties": {}
+                      },
+                      "csContactIntakeEnabled": {
+                        "type": "boolean",
+                        "example": false
+                      },
+                      "deleted": {
+                        "nullable": true,
+                        "example": null
+                      },
+                      "followUpSurvey": {
+                        "nullable": true,
+                        "example": null
+                      },
+                      "id": {
+                        "type": "string",
+                        "example": "5f936754-a95f-4439-8204-bb01565e8204"
+                      },
+                      "instructions": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "Migration Test Project"
+                      },
+                      "networkId": {
+                        "type": "string",
+                        "example": "Hx72rpOGu5mNN1Vh7aEj92UE5JXww"
+                      },
+                      "notifyProjectUsersEnabled": {
+                        "type": "boolean",
+                        "example": false
+                      },
+                      "organizationId": {
+                        "type": "string",
+                        "example": "HxPKoLwK7H0PDOq7iWoyyNWfB79KGp"
+                      },
+                      "overview": {
+                        "type": "string",
+                        "example": "This project is simply to preview resource search in CS Care"
+                      },
+                      "prefix": {
+                        "type": "string",
+                        "example": "MTP"
+                      },
+                      "publicIntakeEnabled": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "publicIntakeHash": {
+                        "type": "string",
+                        "example": "1d8538016797b19e65a1d5b8c6cc05941313c3b47e077b630e247458260d1a1a"
+                      },
+                      "publicIntakeSources": {
+                        "type": "array",
+                        "items": {},
+                        "example": []
+                      },
+                      "publicIntakeThankYouUrl": {
+                        "nullable": true,
+                        "example": null
+                      },
+                      "referralDeliverySettings": {
+                        "type": "object",
+                        "properties": {
+                          "email": {
+                            "type": "boolean",
+                            "example": true
+                          },
+                          "sms": {
+                            "type": "boolean",
+                            "example": true
+                          }
+                        }
+                      },
+                      "referralTemplateId": {
+                        "nullable": true,
+                        "example": null
+                      },
+                      "relatedResourceIds": {
+                        "type": "array",
+                        "items": {},
+                        "example": []
+                      },
+                      "shortName": {
+                        "type": "string",
+                        "example": "For Testing"
+                      },
+                      "statuses": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "archived": {
+                              "type": "boolean",
+                              "example": false
+                            },
+                            "id": {
+                              "type": "string",
+                              "example": "ce65349b-5477-4899-9f6a-6db7ac42b95c"
+                            },
+                            "isFinal": {
+                              "type": "boolean",
+                              "example": false
+                            },
+                            "isInitial": {
+                              "type": "boolean",
+                              "example": true
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "New Case Created"
+                            }
+                          }
+                        },
+                        "example": [
+                          {
+                            "archived": false,
+                            "id": "ce65349b-5477-4899-9f6a-6db7ac42b95c",
+                            "isFinal": false,
+                            "isInitial": true,
+                            "name": "New Case Created"
+                          },
+                          {
+                            "archived": false,
+                            "id": "d75aad00-ea6a-4278-a60d-e7bbcfb51835",
+                            "isFinal": false,
+                            "isInitial": false,
+                            "name": "Address - Invalid"
+                          },
+                          {
+                            "archived": false,
+                            "id": "9c89f157-63ec-4ae9-9c45-fd66bfae589d",
+                            "isFinal": true,
+                            "isInitial": false,
+                            "name": "Case Closed"
+                          }
+                        ]
+                      },
+                      "surveyId": {
+                        "type": "string",
+                        "example": "HxD3w5k9xHBlop0wUBBjmJkH13ByWn"
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "example": "2024-05-17T17:35:23.634Z"
+                      }
+                    }
+                  },
+                  "example": [
+                    {
+                      "automationsEnabled": false,
+                      "carePlanEnabled": false,
+                      "casesTableSettings": null,
+                      "createdAt": "2024-05-17T17:35:23.634Z",
+                      "csContactIntakeDisplayControl": {},
+                      "csContactIntakeEnabled": false,
+                      "deleted": null,
+                      "followUpSurvey": null,
+                      "id": "5f936754-a95f-4439-8204-bb01565e8204",
+                      "instructions": "",
+                      "name": "Migration Test Project",
+                      "networkId": "Hx72rpOGu5mNN1Vh7aEj92UE5JXww",
+                      "notifyProjectUsersEnabled": false,
+                      "organizationId": "HxPKoLwK7H0PDOq7iWoyyNWfB79KGp",
+                      "overview": "This project is simply to preview resource search in CS Care",
+                      "prefix": "MTP",
+                      "publicIntakeEnabled": true,
+                      "publicIntakeHash": "1d8538016797b19e65a1d5b8c6cc05941313c3b47e077b630e247458260d1a1a",
+                      "publicIntakeSources": [],
+                      "publicIntakeThankYouUrl": null,
+                      "referralDeliverySettings": {
+                        "email": true,
+                        "sms": true
+                      },
+                      "referralTemplateId": null,
+                      "relatedResourceIds": [],
+                      "shortName": "For Testing",
+                      "statuses": [
+                        {
+                          "archived": false,
+                          "id": "ce65349b-5477-4899-9f6a-6db7ac42b95c",
+                          "isFinal": false,
+                          "isInitial": true,
+                          "name": "New Case Created"
+                        },
+                        {
+                          "archived": false,
+                          "id": "d75aad00-ea6a-4278-a60d-e7bbcfb51835",
+                          "isFinal": false,
+                          "isInitial": false,
+                          "name": "Address - Invalid"
+                        },
+                        {
+                          "archived": false,
+                          "id": "9c89f157-63ec-4ae9-9c45-fd66bfae589d",
+                          "isFinal": true,
+                          "isInitial": false,
+                          "name": "Case Closed"
+                        }
+                      ],
+                      "surveyId": "HxD3w5k9xHBlop0wUBBjmJkH13ByWn",
+                      "updatedAt": "2024-05-17T17:35:23.634Z"
+                    }
+                  ]
+                },
+                "examples": {
+                  "GET Projects Data Example": {
+                    "value": [
+                      {
+                        "automationsEnabled": false,
+                        "carePlanEnabled": false,
+                        "casesTableSettings": null,
+                        "createdAt": "2024-05-17T17:35:23.634Z",
+                        "csContactIntakeDisplayControl": {},
+                        "csContactIntakeEnabled": false,
+                        "deleted": null,
+                        "followUpSurvey": null,
+                        "id": "5f936754-a95f-4439-8204-bb01565e8204",
+                        "instructions": "",
+                        "name": "Migration Test Project",
+                        "networkId": "Hx72rpOGu5mNN1Vh7aEj92UE5JXww",
+                        "notifyProjectUsersEnabled": false,
+                        "organizationId": "HxPKoLwK7H0PDOq7iWoyyNWfB79KGp",
+                        "overview": "This project is simply to preview resource search in CS Care",
+                        "prefix": "MTP",
+                        "publicIntakeEnabled": true,
+                        "publicIntakeHash": "1d8538016797b19e65a1d5b8c6cc05941313c3b47e077b630e247458260d1a1a",
+                        "publicIntakeSources": [],
+                        "publicIntakeThankYouUrl": null,
+                        "referralDeliverySettings": {
+                          "email": true,
+                          "sms": true
+                        },
+                        "referralTemplateId": null,
+                        "relatedResourceIds": [],
+                        "shortName": "For Testing",
+                        "statuses": [
+                          {
+                            "archived": false,
+                            "id": "ce65349b-5477-4899-9f6a-6db7ac42b95c",
+                            "isFinal": false,
+                            "isInitial": true,
+                            "name": "New Case Created"
+                          },
+                          {
+                            "archived": false,
+                            "id": "d75aad00-ea6a-4278-a60d-e7bbcfb51835",
+                            "isFinal": false,
+                            "isInitial": false,
+                            "name": "Address - Invalid"
+                          },
+                          {
+                            "archived": false,
+                            "id": "9c89f157-63ec-4ae9-9c45-fd66bfae589d",
+                            "isFinal": true,
+                            "isInitial": false,
+                            "name": "Case Closed"
+                          }
+                        ],
+                        "surveyId": "HxD3w5k9xHBlop0wUBBjmJkH13ByWn",
+                        "updatedAt": "2024-05-17T17:35:23.634Z"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "apiKey": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "apiKey": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Case",
+      "description": "Part of the [https://care.211cs.org](https://care.211cs.org) API - this API is technically outside of the Nexus API, but complements it by giving us direct access to cases (rebuilt transaction events) and projects (a unique data structure)."
+    },
+    {
+      "name": "Project",
+      "description": "Part of the [https://care.211cs.org](https://care.211cs.org) API - Projects are a CS Care data model that governs who has access to individual cases. It also creates a permission structure for users that are \"added\" to a project."
+    }
+  ]
+}
