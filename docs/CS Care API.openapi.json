@@ -1482,6 +1482,308 @@
           }
         }
       }
+    },
+    "/api/external/audit-logs": {
+      "get": {
+        "tags": [
+          "Audit Log"
+        ],
+        "summary": "GET Audit Log",
+        "description": "GET Audit Log",
+        "operationId": "getAuditLog",
+        "parameters": [
+          {
+            "name": "$limit",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GET Audit Log",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "https://care.211cs.org"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "string",
+                  "example": "584"
+                }
+              },
+              "Cross-Origin-Opener-Policy": {
+                "schema": {
+                  "type": "string",
+                  "example": "same-origin"
+                }
+              },
+              "Cross-Origin-Resource-Policy": {
+                "schema": {
+                  "type": "string",
+                  "example": "same-origin"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 11 Apr 2025 15:17:29 GMT"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"248-t7WH6SIaOMPVzKp5SGiRyKMS+5k\""
+                }
+              },
+              "Origin-Agent-Cluster": {
+                "schema": {
+                  "type": "string",
+                  "example": "?1"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-referrer"
+                }
+              },
+              "Strict-Transport-Security": {
+                "schema": {
+                  "type": "string",
+                  "example": "max-age=15552000; includeSubDomains"
+                }
+              },
+              "Vary": {
+                "schema": {
+                  "type": "string",
+                  "example": "Origin, Accept-Encoding"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "example": "nosniff"
+                }
+              },
+              "X-DNS-Prefetch-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "off"
+                }
+              },
+              "X-Download-Options": {
+                "schema": {
+                  "type": "string",
+                  "example": "noopen"
+                }
+              },
+              "X-Permitted-Cross-Domain-Policies": {
+                "schema": {
+                  "type": "string",
+                  "example": "none"
+                }
+              },
+              "X-XSS-Protection": {
+                "schema": {
+                  "type": "string",
+                  "example": "0"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "__meta": {
+                      "type": "object",
+                      "properties": {
+                        "currentLength": {
+                          "type": "number",
+                          "example": 1
+                        },
+                        "nextUrl": {
+                          "type": "string",
+                          "example": "https://care.211cs.org/api/external/audit-logs"
+                        },
+                        "perPage": {
+                          "type": "number",
+                          "example": 1
+                        },
+                        "prevUrl": {
+                          "nullable": true,
+                          "example": null
+                        },
+                        "total": {
+                          "type": "number",
+                          "example": 2441
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "agency_id": {
+                            "type": "string",
+                            "example": "HxO9PzbrIqxPlQQHD2KXAgHVOPeXo"
+                          },
+                          "audit_comment": {
+                            "type": "string",
+                            "example": "Test"
+                          },
+                          "audit_objects": {
+                            "type": "array",
+                            "items": {},
+                            "example": []
+                          },
+                          "audit_timestamp": {
+                            "type": "string",
+                            "example": "2024-07-02T18:53:31.610Z"
+                          },
+                          "audit_types": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "audit_log_id": {
+                                  "type": "number",
+                                  "example": 7435
+                                },
+                                "audit_type_id": {
+                                  "type": "number",
+                                  "example": 760
+                                }
+                              }
+                            },
+                            "example": [
+                              {
+                                "audit_log_id": 7435,
+                                "audit_type_id": 760
+                              }
+                            ]
+                          },
+                          "entity_id": {
+                            "type": "string",
+                            "example": "HxO9PzbrIqxPlQQHD2KXAgHVOPeXo"
+                          },
+                          "entity_type": {
+                            "type": "string",
+                            "example": "Agency"
+                          },
+                          "id": {
+                            "type": "number",
+                            "example": 7435
+                          },
+                          "organizationId": {
+                            "type": "string",
+                            "example": "HxPKoLwK7H0PDOq7iWoyyNWfB79KGp"
+                          },
+                          "res_user": {
+                            "type": "object",
+                            "properties": {
+                              "firstname": {
+                                "type": "string",
+                                "example": "Fake"
+                              },
+                              "lastname": {
+                                "type": "string",
+                                "example": "Name"
+                              },
+                              "nexus_id": {
+                                "type": "string",
+                                "example": "Hxq4z587pcQnqDKGcL9OB99hn0pzr9"
+                              }
+                            }
+                          },
+                          "user_id": {
+                            "type": "number",
+                            "example": 158
+                          }
+                        }
+                      },
+                      "example": [
+                        {
+                          "agency_id": "HxO9PzbrIqxPlQQHD2KXAgHVOPeXo",
+                          "audit_comment": "Test",
+                          "audit_objects": [],
+                          "audit_timestamp": "2024-07-02T18:53:31.610Z",
+                          "audit_types": [
+                            {
+                              "audit_log_id": 7435,
+                              "audit_type_id": 760
+                            }
+                          ],
+                          "entity_id": "HxO9PzbrIqxPlQQHD2KXAgHVOPeXo",
+                          "entity_type": "Agency",
+                          "id": 7435,
+                          "organizationId": "HxPKoLwK7H0PDOq7iWoyyNWfB79KGp",
+                          "res_user": {
+                            "firstname": "Fake",
+                            "lastname": "Name",
+                            "nexus_id": "Hxq4z587pcQnqDKGcL9OB99hn0pzr9"
+                          },
+                          "user_id": 158
+                        }
+                      ]
+                    }
+                  }
+                },
+                "examples": {
+                  "GET Audit Log": {
+                    "value": {
+                      "__meta": {
+                        "currentLength": 1,
+                        "nextUrl": "https://care.211cs.org/api/external/audit-logs",
+                        "perPage": 1,
+                        "prevUrl": null,
+                        "total": 2441
+                      },
+                      "data": [
+                        {
+                          "agency_id": "HxO9PzbrIqxPlQQHD2KXAgHVOPeXo",
+                          "audit_comment": "Test",
+                          "audit_objects": [],
+                          "audit_timestamp": "2024-07-02T18:53:31.610Z",
+                          "audit_types": [
+                            {
+                              "audit_log_id": 7435,
+                              "audit_type_id": 760
+                            }
+                          ],
+                          "entity_id": "HxO9PzbrIqxPlQQHD2KXAgHVOPeXo",
+                          "entity_type": "Agency",
+                          "id": 7435,
+                          "organizationId": "HxPKoLwK7H0PDOq7iWoyyNWfB79KGp",
+                          "res_user": {
+                            "firstname": "Fake",
+                            "lastname": "Name",
+                            "nexus_id": "Hxq4z587pcQnqDKGcL9OB99hn0pzr9"
+                          },
+                          "user_id": 158
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1506,6 +1808,9 @@
     {
       "name": "Project",
       "description": "Part of the [https://care.211cs.org](https://care.211cs.org) API - Projects are a CS Care data model that governs who has access to individual cases. It also creates a permission structure for users that are \"added\" to a project."
+    },
+    {
+      "name": "Audit Log"
     }
   ]
 }

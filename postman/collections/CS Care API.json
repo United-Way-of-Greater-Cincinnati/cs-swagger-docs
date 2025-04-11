@@ -179,7 +179,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"projectId\": \"90d44b3b-8a4b-48be-aab1-e261b170841f\",\r\n    \"source\": \"string\",\r\n    \"status\": {\r\n        \"id\": \"uui6003ac1a-4c02-494e-b9b1-380d902b38eed\",\r\n        \"reason\": \"New Case Created\"\r\n    },\r\n    \"surveyData\": {\r\n        \"intake\": {\r\n            \"field_1\": \"value1\",\r\n        },\r\n        \"demographic\": {\r\n            \"givenName\": \"John\",\r\n            \"familyName\": \"Doe\",\r\n        ...\r\n        }\r\n    },\r\n    \"notes\": string[]\r\n}",
+							"raw": "{\r\n    \"projectId\": \"90d44b3b-8a4b-48be-aab1-e261b170841f\",\r\n    \"source\": \"contact\",\r\n    \"surveyData\": {\r\n        \"intake\": {\r\n            \"end\": \"\",\r\n            \"race\": \"\",\r\n            \"State\": \"\",\r\n            \"email\": \"luke.skywalker@jediknights.com\",\r\n            \"start\": \"\",\r\n            \"gender\": \"\",\r\n            \"birthDate\": \"1977-12-07\",\r\n            \"ethnicity\": \"\",\r\n            \"givenName\": \"Luke\",\r\n            \"telephone\": \"1323555885\",\r\n            \"familyName\": \"Skywalker\",\r\n            \"postalCode\": \"41011\",\r\n            \"knowsLanguage\": \"english\",\r\n            \"streetAddress\": \"\",\r\n            \"Household_Size\": \"\",\r\n            \"Housing_Status\": \"\",\r\n            \"addressLocality\": \"\",\r\n            \"expectant_parent\": \"\",\r\n            \"minors_age_0_to_5\": \"\",\r\n            \"Minors_in_Household\": \"\",\r\n            \"City_of_Cincinnati_Resident\": \"\",\r\n            \"Caller_consented_to_profile_cr\": \"\",\r\n            \"_Search_UWGC_211_Add_tinyurl_com_211addy\": \"\",\r\n            \"_span_style_color_gr_create_profile_span\": \"\",\r\n            \"_span_style_color_bl_ill_not_display_span\": \"\",\r\n            \"_span_style_color_cr_t_cannot_verify_span\": \"\"\r\n        }\r\n    },\r\n    \"notes\": [\r\n        \"This is a star wars case!\"\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -532,6 +532,210 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "Audit Log",
+			"item": [
+				{
+					"name": "GET Audit Log",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d76b783b-2ec7-43fd-854b-fc00481d3123",
+								"exec": [
+									"// --- LOAD SHARED FUNCTIONS ---\r",
+									"if (pm.collectionVariables.get(\"sharedFunctions\")) {\r",
+									"    eval(pm.collectionVariables.get(\"sharedFunctions\"));\r",
+									"} else {\r",
+									"    console.warn(\"Shared functions not found. Please add them to your collection's Pre-request Script.\");\r",
+									"}\r",
+									"\r",
+									"// --- DEFINE EXPECTED SCHEMAS ---\r",
+									"const expectedDataSchema = {\r",
+									"    \"id\": 7435,\r",
+									"    \"audit_comment\": \"Test\",\r",
+									"    \"audit_timestamp\": \"2024-07-02T18:53:31.610Z\",\r",
+									"    \"entity_type\": \"Agency\",\r",
+									"    \"entity_id\": \"HxO9PzbrIqxPlQQHD2KXAgHVOPeXo\",\r",
+									"    \"user_id\": 158,\r",
+									"    \"organizationId\": \"HxPKoLwK7H0PDOq7iWoyyNWfB79KGp\",\r",
+									"    \"agency_id\": \"HxO9PzbrIqxPlQQHD2KXAgHVOPeXo\",\r",
+									"    \"audit_types\": [\r",
+									"        {\r",
+									"            \"audit_log_id\": 7435,\r",
+									"            \"audit_type_id\": 760\r",
+									"        }\r",
+									"    ],\r",
+									"    \"audit_objects\": [],\r",
+									"    \"res_user\": {\r",
+									"        \"firstname\": \"Fake\",\r",
+									"        \"lastname\": \"Name\",\r",
+									"        \"nexus_id\": \"Hxq4z587pcQnqDKGcL9OB99hn0pzr9\"\r",
+									"    }\r",
+									"};\r",
+									"\r",
+									"let actualResponse;\r",
+									"try {\r",
+									"    actualResponse = pm.response.json();\r",
+									"} catch (e) {\r",
+									"    pm.test(\"Response is valid JSON\", function() {\r",
+									"        pm.expect.fail(\"Response is not valid JSON.\");\r",
+									"    });\r",
+									"    return;\r",
+									"}\r",
+									"\r",
+									"// Validate using the collection response function.\r",
+									"const mismatches = validateGetCollectionResponse(expectedMetaSchema(), expectedDataSchema, actualResponse, 10);\r",
+									"\r",
+									"pm.test(\"GET Collection Response: Valid schema\", function() {\r",
+									"    pm.expect(mismatches, \"Mismatches found: \" + mismatches.join(\" | \")).to.be.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "a167ac76-652a-4a28-a0ce-46d1f9b9dcb7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://care.211cs.org/api/external/audit-logs",
+							"protocol": "https",
+							"host": [
+								"care",
+								"211cs",
+								"org"
+							],
+							"path": [
+								"api",
+								"external",
+								"audit-logs"
+							],
+							"query": [
+								{
+									"key": "$limit",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "491ac1af-c080-4e81-8fe7-5e4b44fb1d37",
+							"name": "GET Audit Log",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://care.211cs.org/api/external/audit-logs",
+									"protocol": "https",
+									"host": [
+										"care",
+										"211cs",
+										"org"
+									],
+									"path": [
+										"api",
+										"external",
+										"audit-logs"
+									],
+									"query": [
+										{
+											"key": "$limit",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 11 Apr 2025 15:17:29 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "584"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "https://care.211cs.org"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"248-t7WH6SIaOMPVzKp5SGiRyKMS+5k\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"__meta\": {\n        \"total\": 2441,\n        \"perPage\": 1,\n        \"currentLength\": 1,\n        \"prevUrl\": null,\n        \"nextUrl\": \"https://care.211cs.org/api/external/audit-logs\"\n    },\n    \"data\": [\n        {\n            \"id\": 7435,\n            \"audit_comment\": \"Test\",\n            \"audit_timestamp\": \"2024-07-02T18:53:31.610Z\",\n            \"entity_type\": \"Agency\",\n            \"entity_id\": \"HxO9PzbrIqxPlQQHD2KXAgHVOPeXo\",\n            \"user_id\": 158,\n            \"organizationId\": \"HxPKoLwK7H0PDOq7iWoyyNWfB79KGp\",\n            \"agency_id\": \"HxO9PzbrIqxPlQQHD2KXAgHVOPeXo\",\n            \"audit_types\": [\n                {\n                    \"audit_log_id\": 7435,\n                    \"audit_type_id\": 760\n                }\n            ],\n            \"audit_objects\": [],\n            \"res_user\": {\n                \"firstname\": \"Fake\",\n                \"lastname\": \"Name\",\n                \"nexus_id\": \"Hxq4z587pcQnqDKGcL9OB99hn0pzr9\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				}
+			],
+			"id": "8d34f1df-91d8-46ba-b6d7-0b3db91f9e44"
 		}
 	],
 	"auth": {
@@ -553,10 +757,139 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "85457305-bd31-4fb2-8316-bb9b060fbf69",
+				"id": "7f9ac666-487c-4e51-8bcc-708cbc0e4e54",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
+					"// --- COLLECTION LEVEL SHARED FUNCTIONS ---\r",
+					"// Save these helper functions so they can be reused in your requests.\r",
+					"pm.collectionVariables.set(\"sharedFunctions\", `\r",
+					"/**\r",
+					" * Performs a shallow comparison of an object's keys.\r",
+					" * For non-'metadata' keys, both missing and extra keys are flagged.\r",
+					" * For the 'metadata' sub-object, missing keys are tolerated while extra keys are flagged.\r",
+					" *\r",
+					" * @param {Object} expected - The allowed keys for the base object.\r",
+					" * @param {Object} actual - The actual object to compare.\r",
+					" * @returns {Array} Array of mismatch messages (empty if matching).\r",
+					" */\r",
+					"function baseObjectCompare(expected, actual) {\r",
+					"    var mismatches = [];\r",
+					"    \r",
+					"    // Check for missing keys (tolerate if the key is \"metadata\")\r",
+					"    Object.keys(expected).forEach(function(key) {\r",
+					"        if (!(key in actual)) {\r",
+					"            if (key !== \"metadata\") {\r",
+					"                mismatches.push(\"Missing key at base level: \" + key);\r",
+					"            }\r",
+					"        }\r",
+					"    });\r",
+					"    \r",
+					"    // Check for extra keys at the base level.\r",
+					"    Object.keys(actual).forEach(function(key) {\r",
+					"        if (!(key in expected)) {\r",
+					"            mismatches.push(\"Extra key at base level: \" + key);\r",
+					"        } else {\r",
+					"            // For the \"metadata\" field, compare extra keys only.\r",
+					"            if (key === \"metadata\" &&\r",
+					"                typeof actual[key] === \"object\" && actual[key] !== null &&\r",
+					"                typeof expected[key] === \"object\" && expected[key] !== null) {\r",
+					"                Object.keys(actual[key]).forEach(function(mkey) {\r",
+					"                    if (!(mkey in expected[key])) {\r",
+					"                        mismatches.push(\"Extra key in metadata: \" + mkey);\r",
+					"                    }\r",
+					"                });\r",
+					"            }\r",
+					"        }\r",
+					"    });\r",
+					"    return mismatches;\r",
+					"}\r",
+					"\r",
+					"/**\r",
+					" * Validates a GET collection response which should have a __meta object and a data array.\r",
+					" *\r",
+					" * @param {Object} expectedMetaSchema - Expected structure for the __meta object.\r",
+					" * @param {Object} expectedDataSchema - Expected structure for each item in the data array.\r",
+					" * @param {Object} actualResponse - The full API response.\r",
+					" * @param {number} limit - The number of data items to check (default is 10).\r",
+					" * @returns {Array} Array of mismatch messages.\r",
+					" */\r",
+					"function validateGetCollectionResponse(expectedMetaSchema, expectedDataSchema, actualResponse, limit) {\r",
+					"    var mismatches = [];\r",
+					"    var lim = limit || 10;\r",
+					"    \r",
+					"    // Validate __meta: It must be present.\r",
+					"    if (!actualResponse.hasOwnProperty(\"__meta\")) {\r",
+					"        mismatches.push(\"Missing __meta in response\");\r",
+					"    } else {\r",
+					"        var metaMismatches = baseObjectCompare(expectedMetaSchema, actualResponse.__meta);\r",
+					"        if (metaMismatches.length > 0) {\r",
+					"            mismatches.push(\"__meta issues: \" + metaMismatches.join(\", \"));\r",
+					"        }\r",
+					"    }\r",
+					"    \r",
+					"    // Validate data: Must be present and an array.\r",
+					"    if (!actualResponse.hasOwnProperty(\"data\")) {\r",
+					"        mismatches.push(\"Missing data array in response\");\r",
+					"    } else if (!Array.isArray(actualResponse.data)) {\r",
+					"        mismatches.push(\"data is not an array\");\r",
+					"    } else {\r",
+					"        var count = Math.min(actualResponse.data.length, lim);\r",
+					"        for (var i = 0; i < count; i++) {\r",
+					"            var item = actualResponse.data[i];\r",
+					"            var itemMismatches = baseObjectCompare(expectedDataSchema, item);\r",
+					"            if (itemMismatches.length > 0) {\r",
+					"                mismatches.push(\"Data index \" + i + \": \" + itemMismatches.join(\", \"));\r",
+					"            }\r",
+					"        }\r",
+					"    }\r",
+					"    \r",
+					"    // Auto-capture new schema if mismatches are found on a 20× response.\r",
+					"    if (pm.response && pm.response.code >= 200 && pm.response.code < 300 && mismatches.length > 0) {\r",
+					"        var newSchema = {\r",
+					"            __meta: actualResponse.__meta,\r",
+					"            data: Array.isArray(actualResponse.data) ? actualResponse.data.slice(0, Math.min(actualResponse.data.length, lim)) : []\r",
+					"        };\r",
+					"        pm.collectionVariables.set(\"newApiSchema\", JSON.stringify(newSchema, null, 2));\r",
+					"        console.warn(\"GET Collection: Schema mismatches detected. New schema saved in 'newApiSchema' for review.\");\r",
+					"    }\r",
+					"    \r",
+					"    return mismatches;\r",
+					"}\r",
+					"\r",
+					"/**\r",
+					" * Validates a GET /:id response, which returns a single data object.\r",
+					" *\r",
+					" * @param {Object} expectedDataSchema - Expected structure for the data object.\r",
+					" * @param {Object} actualResponse - The full API response.\r",
+					" * @returns {Array} Array of mismatch messages.\r",
+					" */\r",
+					"function validateGetItemResponse(expectedDataSchema, actualResponse) {\r",
+					"    var item = (actualResponse && typeof actualResponse === \"object\" && !Array.isArray(actualResponse)) ? actualResponse : {};  \r",
+					"\r",
+					"    var mismatches = baseObjectCompare(expectedDataSchema, item);\r",
+					"\r",
+					"    if (pm.response && pm.response.code >= 200 && pm.response.code < 300 && mismatches.length > 0) {\r",
+					"        pm.collectionVariables.set(\"newApiSchema\", JSON.stringify(item, null, 2));\r",
+					"        console.warn(\"GET /:id: Schema mismatches detected. New schema saved in 'newApiSchema' for review.\");\r",
+					"    }\r",
+					"\r",
+					"    return mismatches;\r",
+					"}\r",
+					"\r",
+					"\r",
+					"// --- DEFINE META SCHEMAS ---\r",
+					"// For a collection route, you should provide both expected meta and data schemas.\r",
+					"function expectedMetaSchema() {\r",
+					"    return({\r",
+					"        \"total\": 1,\r",
+					"        \"perPage\": 100,\r",
+					"        \"currentLength\": 1,\r",
+					"        \"prevUrl\": \"string\",\r",
+					"        \"nextUrl\": \"string\"\r",
+					"    })\r",
+					"};\r",
+					"`);\r",
 					""
 				]
 			}
@@ -564,7 +897,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "09b33b4b-02e0-4e49-8b32-4914bf6d101a",
+				"id": "a3250126-f511-49ae-b656-aaa17e94d163",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -575,16 +908,21 @@
 	],
 	"variable": [
 		{
-			"id": "c67ab450-a487-4ffa-9bf6-a44a41c2ae52",
+			"id": "d7ba8982-68f8-4a8b-9069-dbff3344147f",
 			"key": "auth_header",
 			"value": "Authorization",
 			"type": "string"
 		},
 		{
-			"id": "903902c5-0d1c-4083-bc00-e074de084cc6",
+			"id": "627ec899-00c5-4de9-81aa-ee9621e17b34",
 			"key": "test_project_id",
 			"value": "90d44b3b-8a4b-48be-aab1-e261b170841f",
 			"type": "string"
+		},
+		{
+			"id": "4275b375-0be0-432e-9c6c-22e855f95bdb",
+			"key": "sharedFunctions",
+			"value": ""
 		}
 	]
 }
