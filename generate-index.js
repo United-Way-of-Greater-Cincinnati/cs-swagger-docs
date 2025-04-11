@@ -1,46 +1,45 @@
+// generate-index.js
 const fs = require("fs");
 const path = require("path");
 
 const docsDir = path.join(__dirname, "docs");
 
-// Read all HTML files in the docs directory
+// Read all HTML files in the docs directory except index.html
 fs.readdir(docsDir, (err, files) => {
   if (err) {
     console.error("Error reading docs directory:", err);
     process.exit(1);
   }
 
-  // Filter out index.html (if it exists) from the list
   const htmlFiles = files.filter(
     (file) => file.endsWith(".html") && file !== "index.html"
   );
 
   // Generate HTML links for each file
   const links = htmlFiles
-    .map((f) => `<li><a href="${f}">${f}</a></li>`)
+    .map((f) => `<li><a href="${f}">${f.replace(".html", "")}</a></li>`)
     .join("\n");
 
-  const indexContent = `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>My API Docs</title>
-</head>
-<body>
+  // Create an index file with Jekyll front matter
+  const indexContent = `---
+layout: default
+title: My API Docs
+---
+
+<div class="page-header">
   <h1>Available API Documentation</h1>
-  <ul>
-    ${links}
-  </ul>
-</body>
-</html>
+</div>
+
+<ul>
+  ${links}
+</ul>
 `;
 
   fs.writeFile(path.join(docsDir, "index.html"), indexContent, (err) => {
     if (err) {
       console.error("Error writing index.html:", err);
     } else {
-      console.log("index.html has been generated successfully.");
+      console.log("index.html has been generated with a Jekyll theme.");
     }
   });
 });

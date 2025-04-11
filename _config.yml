@@ -1,0 +1,4 @@
+# _config.yml
+theme: minima
+title: UWGC Documentation of CareSuite APIs
+description: A collection of generated Swagger UI pages for CareSuites Nexus, Care, Resource, and Contact APIs.
