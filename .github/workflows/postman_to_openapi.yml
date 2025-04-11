@@ -32,6 +32,9 @@ jobs:
       - name: Generate Swagger UI pages
         run: node generate-pages.js
 
+      - name: Generate Root Page
+        run: node generate-index.js
+
       - name: Commit and push OpenAPI docs and HTML pages
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}

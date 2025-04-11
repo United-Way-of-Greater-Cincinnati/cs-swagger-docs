@@ -47,7 +47,11 @@ fs.readdir(docsDir, (err, files) => {
   apiFiles.forEach((file) => {
     const htmlContent = generateHtmlPage(file);
     // Create a HTML file using the same basename (e.g., myapi.openapi.json -> myapi.html)
-    const baseName = file.replace(/\.openapi\.json$/, "");
+    const baseName = file
+      .replace(/\.openapi\.json$/, "")
+      .toLowerCase()
+      .split(" ")
+      .join("-");
     const htmlFilename = baseName + ".html";
     fs.writeFile(path.join(docsDir, htmlFilename), htmlContent, (err) => {
       if (err) {
