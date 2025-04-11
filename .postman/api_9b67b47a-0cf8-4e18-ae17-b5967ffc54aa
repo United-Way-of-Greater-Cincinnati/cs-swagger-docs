@@ -9,8 +9,8 @@ id = 9b67b47a-0cf8-4e18-ae17-b5967ffc54aa
 
 [config.relations.collections]
 rootDirectory = postman/collections
-files[] = {"id":"42620355-7850be7d-9ac2-450e-a4b1-5b88de6e05ee","path":"211 Nexus Documentation.json","metaData":{}}
 files[] = {"id":"42620355-22e411b7-1e10-4287-9ee9-6109164b38f1","path":"CS Care API.json","metaData":{}}
+files[] = {"id":"42620355-7850be7d-9ac2-450e-a4b1-5b88de6e05ee","path":"Nexus 211 API.json","metaData":{}}
 
 [config.relations.collections.metaData]
 
