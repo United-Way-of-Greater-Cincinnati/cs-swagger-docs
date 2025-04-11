@@ -30,7 +30,7 @@ jobs:
         run: node convert-postman.js
 
       - name: Generate Swagger UI pages
-        run: node generate-swagger-pages.js
+        run: node generate-pages.js
 
       - name: Commit and push OpenAPI docs and HTML pages
         env:
